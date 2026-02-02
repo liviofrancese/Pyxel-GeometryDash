@@ -125,3 +125,16 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - Music dans le menu changé
 ### 📝 À faire:
 - Faire une meilleur musique du menu
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">02/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Niveau 2 continué
+- Gravité changé pour plus de fluidité
+- Création de editlvls.py qui permettera de modifier les niveaux directement en jeu au lieu de modifier obstacleslvls.py
+### 📝 À faire:
+- Faire le editlvls.py pour modifié le niveau en jeu
+- Refaire les niveaux (car gravité changé)
