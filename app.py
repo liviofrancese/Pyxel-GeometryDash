@@ -12,7 +12,7 @@ class Game:
         pyxel.mouse(True)
         pyxel.load("geometrydash.pyxres")
 
-        
+
 
 
         #cube
@@ -67,8 +67,8 @@ class Game:
         #Songs
         self.menu_song_var = False
         self.death_sound_var = False
-        
-        
+
+
 
         self.music_position = None
         self.sound = 0
@@ -133,6 +133,10 @@ class Game:
 
 
 #level
+    def jumping(self):
+        self.jump = True
+        self.velocity_y = self.jump_strength
+        self.cube_rot = True
     def reset_obstacles(self):
         if self.current_level == 'level1':
             self.obstacle_liste, self.end_level = lvl1(self.spike_y_min)
@@ -170,9 +174,7 @@ class Game:
             #Utilisation de l'orb
             if obstacle['type']=='orb':
                 if obstacle['used']==False and self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE): #A CONTINUER
-                    self.jump = True
-                    self.velocity_y = self.jump_strength
-                    self.cube_rot = True
+                    self.jumping()
                     obstacle['used']=True
 
             #Collisions
@@ -212,9 +214,7 @@ class Game:
     def cube_jump_rot(self):
         #Saut du cube
         if pyxel.btn(pyxel.KEY_SPACE) and self.jump==False:
-            self.jump = True
-            self.velocity_y = self.jump_strength
-            self.cube_rot = True
+            self.jumping()
         self.cube_y += self.velocity_y
         self.velocity_y += self.gravity
         self.is_going_down()
