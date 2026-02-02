@@ -1,5 +1,5 @@
 import pyxel
-from obstacleslvls import *
+import json
 from menu import *
 
 
@@ -20,7 +20,7 @@ class Game:
         self.cube_x_pourc = 0
         self.cube_y_min = 150
         self.cube_y = self.cube_y_min
-        self.spike_y_min = self.cube_y_min
+        self.y_min = self.cube_y_min
         self.cube_rotation = 0
         self.cube_rot = False
         #cube falling
@@ -62,7 +62,9 @@ class Game:
         self.finish_level = False
         self.end_level = 0
         self.end_level_pourc = 0
-
+        #json path
+        self.json_lvl1 = "levels/lvl1.json"
+        self.json_lvl2 = "levels/lvl2.json"
 
         #Songs
         self.menu_song_var = False
@@ -77,7 +79,7 @@ class Game:
 
         pyxel.run(self.update, self.draw)
 
-
+    
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -133,17 +135,25 @@ class Game:
 
 
 #level
-    def jumping(self):
-        self.jump = True
-        self.velocity_y = self.jump_strength
-        self.cube_rot = True
     def reset_obstacles(self):
         if self.current_level == 'level1':
-            self.obstacle_liste, self.end_level = lvl1(self.spike_y_min)
-            #Jouer la music du niveau 1
+            self.obstacle_liste, self.end_level = self.get_json_data(self.json_lvl1)
         elif self.current_level == 'level2':
-            self.obstacle_liste, self.end_level = lvl2(self.spike_y_min)
-            #Jouer la music du niveau 2
+            self.obstacle_liste, self.end_level = self.get_json_data(self.json_lvl2)
+
+    def get_json_data(self, file):
+        with open(file, 'r') as f:
+            data = json.load(f)
+            level_length = data['level_length']
+            obstacle_liste = data['obstacles']
+            for obstacle in obstacle_liste:
+                obstacle['y'] += self.y_min
+                if obstacle['type']=='orb' and 'used' not in obstacle:
+                    obstacle['used'] = False
+                if obstacle['type']=='spike' and 'turned' not in obstacle:
+                    obstacle['turned'] = False
+        return obstacle_liste, level_length
+
     def level_init(self):
         if not self.level_initialisation:
             pyxel.mouse(False)
@@ -152,6 +162,10 @@ class Game:
             self.stop_allsongs()
             self.play_song()
             self.level_initialisation = True
+    def jumping(self):
+        self.jump = True
+        self.velocity_y = self.jump_strength
+        self.cube_rot = True
     def deplacement_obstacles(self):
         for obstacle in self.obstacle_liste:
             obstacle['x'] -= self.speed

@@ -134,8 +134,12 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### ✅ Ajouts / Changements:
 - Niveau 2 continué
 - Gravité changé pour plus de fluidité
+- suppression de obstacleslvls.py pour mettre un niveau dans un fichier.json pour pouvoir le modifier grâce à création de editlvls.py et aussi car les fichiers.json sont un meilleur type que .py pour stocker des données.
 - Création de editlvls.py qui permettera de modifier les niveaux directement en jeu au lieu de modifier obstacleslvls.py
+### ⚠️ Problèmes Rencontrés:
+- Je ne savais pas comment manipuler des fichiers.json donc j'ai regardé des vidéos:
+    - https://www.youtube.com/watch?v=LkdIwvgFYdc
+    - https://www.youtube.com/watch?v=ydd2D9ytprs
 ### 📝 À faire:
 - Faire le editlvls.py pour modifié le niveau en jeu
 - Refaire les niveaux (car gravité changé)
-- changer obstacleslvls.py en un fichier.json pour le editlvls.py pour l'écriture de code
