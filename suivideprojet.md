@@ -138,3 +138,4 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### 📝 À faire:
 - Faire le editlvls.py pour modifié le niveau en jeu
 - Refaire les niveaux (car gravité changé)
+- changer obstacleslvls.py en un fichier.json pour le editlvls.py pour l'écriture de code

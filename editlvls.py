@@ -1,3 +1,7 @@
 import pyxel
-from obstacleslvls import *
 
+
+
+class LevelEditor:
+    def __init__(self):
+        pass
