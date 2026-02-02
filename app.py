@@ -31,8 +31,8 @@ class Game:
 
 
         #Phisique du jeu
-        self.gravity = 1.45
-        self.jump_strength = -9.5
+        self.gravity = 0.98 #1.45
+        self.jump_strength = -7.5 #-9.5
         self.velocity_x = 4.4
         self.speed = self.velocity_x
         self.velocity_y = 0
