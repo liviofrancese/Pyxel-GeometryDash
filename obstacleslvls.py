@@ -228,10 +228,14 @@ def lvl2(spike_y_min): #saut de block (+60/55 en x) ; saut de 2spike (+10 en x)
         {'x': 960+15, 'y': spike_y_min , 'type': 'spike', 'turned': False},
         {'x': 960+30, 'y': spike_y_min , 'type': 'spike', 'turned': False},
         {'x': 1075, 'y': spike_y_min-16, 'type': 'orb', 'used': False},
-        {'x': 1135, 'y': spike_y_min-48, 'type': 'orb', 'used': False},
-        {'x': 1185, 'y': spike_y_min-64, 'type': 'orb', 'used': False},
-        {'x': 1235, 'y': spike_y_min-64, 'type': 'orb', 'used': False},
-        {'x': 1295, 'y': spike_y_min-48, 'type': 'orb', 'used': False},
+        {'x': 1120+20, 'y': spike_y_min-38, 'type': 'orb', 'used': False},
+        {'x': 1165+20, 'y': spike_y_min-56, 'type': 'orb', 'used': False},
+        {'x': 1210+35, 'y': spike_y_min-56, 'type': 'orb', 'used': False},
+        
+        
+        
+        
+        
         {'x': 1100, 'y': spike_y_min, 'type': 'spike', 'turned': False},
         {'x': 1100+15, 'y': spike_y_min, 'type': 'spike', 'turned': False},
         {'x': 1100+30, 'y': spike_y_min, 'type': 'spike', 'turned': False},
