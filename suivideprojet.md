@@ -150,6 +150,10 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 
 ## 📅 <span style="color:orange">02/01/2026:</span>
 ### ✅ Ajouts / Changements:
-- Début: le script détecte automatiquement les niveaux créer
+- Le script détecte automatiquement les fichiers.json et mets dans un dictionnaire le nom du niveau puis là où se trouve le fichier.json pour ensuite récupérer ses données
+- Début d'écriture de editlvls.py (avec la class LevelEditor) , mise en place du bouton d'édition pour accéder à l'interface d'édition qui sera gérer par editlvls.py
 ### ⚠️ Problèmes Rencontrés:
 - Récupérer les noms des fichiers: https://www.youtube.com/shorts/Y6Jtf8AbGHU
+### 📝 À faire:
+- Système automatique où quand on crée un nouveau niveau.json , le script gère automatiquement pour le niveau (DURE)
+- Bouton d'edition de niveau: savoir quel niveau éditer

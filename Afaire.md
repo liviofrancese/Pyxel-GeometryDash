@@ -4,4 +4,5 @@
 - Ajouter les smileys face des difficultés des niveaux
 - Refaire les niveaux (car gravité changé)
 - Faire le editlvls.py pour modifié le niveau en jeu
-- changer obstacleslvls.py en un fichier.json pour le editlvls.py pour l'écriture de code
+- Système automatique où quand on crée un nouveau niveau.json , le script gère automatiquement pour le niveau (DURE)
+- Bouton d'edition de niveau: savoir quel niveau éditer
