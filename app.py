@@ -2,6 +2,7 @@ import pyxel
 import json
 import os
 from menu import *
+from editlvls import LevelEditor
 
 
 
@@ -13,7 +14,7 @@ class Game:
         pyxel.mouse(True)
         pyxel.load("geometrydash.pyxres")
 
-
+        self.level_editor = LevelEditor(self)
 
 
         #cube
@@ -83,12 +84,12 @@ class Game:
     def levels_json(self):
         #Fichiers où se trouvent les niveaux
         levels_folder = f"{os.getcwd()}\\levels"
-        levels = {}
+        self.levels = {}
         for filename in os.listdir(levels_folder):
             if filename.endswith(".json"):
                 #Créer une variable avec l'emplacement du fichier.json
                 var_name = filename.replace(".json", "")
-                levels[var_name] = f"{levels_folder}\\{filename}"
+                self.levels[var_name] = f"{levels_folder}\\{filename}"
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -146,9 +147,9 @@ class Game:
 #level
     def reset_obstacles(self):
         if self.current_level == 'lvl1':
-            self.obstacle_liste, self.end_level = self.get_json_data(levels["lvl1"]) #type: ignore
+            self.obstacle_liste, self.end_level = self.get_json_data(self.levels["lvl1"]) #type: ignore
         elif self.current_level == 'lvl2':
-            self.obstacle_liste, self.end_level = self.get_json_data(levels["lvl2"]) #type: ignore
+            self.obstacle_liste, self.end_level = self.get_json_data(self.levels["lvl2"]) #type: ignore
 
     def get_json_data(self, file):
         with open(file, 'r') as f:
@@ -403,6 +404,9 @@ class Game:
             menu_update(self)
             #arrêter toutes les musics
 
+        if self.level_editor.in_editor:
+            self.level_editor.editor_update()
+
         #noclip
         self.noclip = self.noclip_change()
 
@@ -416,6 +420,9 @@ class Game:
     def draw(self):
         if self.menu: #menu
             menu_draw(self)
+
+        if self.level_editor.in_editor:
+            self.level_editor.editor_draw()
 
         if self.in_level: #dans le niveau
             self.niveau_draw() #chaque level dessine la même chose

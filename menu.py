@@ -1,4 +1,5 @@
 import pyxel
+
 def menu_update(game):
     if not game.menu_song_var:
         pyxel.playm(0, 0, True) #menu song
@@ -35,19 +36,21 @@ def menu_update(game):
 
         #Bouton cliqué ? JOUER
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < game.screen_x/2-64+128 and pyxel.mouse_x > game.screen_x/2-64 and pyxel.mouse_y < game.screen_y/2-16+32 and pyxel.mouse_y > game.screen_y/2-16 or pyxel.btnp(pyxel.KEY_RETURN):
-            if game.chosen_level == 1:
-                game.current_level = 'lvl1'
-
-            if game.chosen_level == 2:
-                game.current_level = 'lvl2'
-
+            game.current_level = f'lvl{game.chosen_level}'
             game.menu = False
             game.in_level = True
 
-def menu_draw(game):
-    if game.game_menu == 1: #menu principale
-        pyxel.cls(1)
+        #Bouton edit lvls
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < game.screen_x/2-90+16 and pyxel.mouse_x > game.screen_x/2-90 and pyxel.mouse_y < game.screen_y/2-5+16 and pyxel.mouse_y > game.screen_y/2-5:
+            game.level_editor.in_editor = True
+            game.menu = False
 
+                
+            #a configuerer
+
+def menu_draw(game):
+    pyxel.cls(1)
+    if game.game_menu == 1: #menu principale
         #Quitter
         pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
@@ -56,12 +59,14 @@ def menu_draw(game):
 
 
     elif game.game_menu == 2: #Sélection niveaux
-        pyxel.cls(1)
-
         #Retour game_menu (croix)
         pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
-        
+
+        #Edit lvls
+        pyxel.blt(game.screen_x/2-90, game.screen_y/2-5, 1, 88, 0, 16, 16,0)
+
+
         #Choix niveau
         pyxel.blt(10, game.screen_y/2, 1, 32, 16, 16, 16,0) #gauche
         pyxel.blt(game.screen_x-10-16, game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
