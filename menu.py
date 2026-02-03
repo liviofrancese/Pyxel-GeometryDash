@@ -42,6 +42,7 @@ def menu_update(game):
 
         #Bouton edit lvls
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < game.screen_x/2-90+16 and pyxel.mouse_x > game.screen_x/2-90 and pyxel.mouse_y < game.screen_y/2-5+16 and pyxel.mouse_y > game.screen_y/2-5:
+            #SAVOIR QUELLE NIVEAU A EDITER
             game.level_editor.in_editor = True
             game.menu = False
 
