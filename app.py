@@ -83,15 +83,12 @@ class Game:
     def levels_json(self):
         #Fichiers où se trouvent les niveaux
         levels_folder = f"{os.getcwd()}\\levels"
-
+        levels = {}
         for filename in os.listdir(levels_folder):
             if filename.endswith(".json"):
                 #Créer une variable avec l'emplacement du fichier.json
                 var_name = filename.replace(".json", "")
-                globals()[var_name] = f"{levels_folder}\\{filename}"
-
-
-
+                levels[var_name] = f"{levels_folder}\\{filename}"
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -121,14 +118,14 @@ class Game:
         self.sec = 0
         for seconds in self.sec_list:
             self.sec += seconds
-        if self.current_level == 'level1':
+        if self.current_level == 'lvl1':
             pyxel.playm(1, sec=self.sec)
         if self.current_level == 'level2':
             pyxel.playm(2, sec=self.sec)
     def play_song(self):
-        if self.current_level == 'level1':
+        if self.current_level == 'lvl1':
             pyxel.playm(1)
-        if self.current_level == 'level2':
+        if self.current_level == 'lvl2':
             pyxel.playm(2)
     def stop_allsongs(self):
         pyxel.stop()
@@ -148,10 +145,10 @@ class Game:
 
 #level
     def reset_obstacles(self):
-        if self.current_level == 'level1':
-            self.obstacle_liste, self.end_level = self.get_json_data(lvl1) #type: ignore
-        elif self.current_level == 'level2':
-            self.obstacle_liste, self.end_level = self.get_json_data(lvl2) #type: ignore
+        if self.current_level == 'lvl1':
+            self.obstacle_liste, self.end_level = self.get_json_data(levels["lvl1"]) #type: ignore
+        elif self.current_level == 'lvl2':
+            self.obstacle_liste, self.end_level = self.get_json_data(levels["lvl2"]) #type: ignore
 
     def get_json_data(self, file):
         with open(file, 'r') as f:
