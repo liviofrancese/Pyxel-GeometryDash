@@ -143,3 +143,13 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### 📝 À faire:
 - Faire le editlvls.py pour modifié le niveau en jeu
 - Refaire les niveaux (car gravité changé)
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">02/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Début: le script détecte automatiquement les niveaux créer
+### ⚠️ Problèmes Rencontrés:
+- Récupérer les noms des fichiers: https://www.youtube.com/shorts/Y6Jtf8AbGHU

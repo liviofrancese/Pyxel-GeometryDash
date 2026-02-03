@@ -1,5 +1,6 @@
 import pyxel
 import json
+import os
 from menu import *
 
 
@@ -63,8 +64,7 @@ class Game:
         self.end_level = 0
         self.end_level_pourc = 0
         #json path
-        self.json_lvl1 = "levels/lvl1.json"
-        self.json_lvl2 = "levels/lvl2.json"
+        self.levels_json()
 
         #Songs
         self.menu_song_var = False
@@ -80,6 +80,18 @@ class Game:
         pyxel.run(self.update, self.draw)
 
     
+    def levels_json(self):
+        #Fichiers où se trouvent les niveaux
+        levels_folder = f"{os.getcwd()}\\levels"
+
+        for filename in os.listdir(levels_folder):
+            if filename.endswith(".json"):
+                #Créer une variable avec l'emplacement du fichier.json
+                var_name = filename.replace(".json", "")
+                globals()[var_name] = f"{levels_folder}\\{filename}"
+
+
+
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -137,9 +149,9 @@ class Game:
 #level
     def reset_obstacles(self):
         if self.current_level == 'level1':
-            self.obstacle_liste, self.end_level = self.get_json_data(self.json_lvl1)
+            self.obstacle_liste, self.end_level = self.get_json_data(lvl1) #type: ignore
         elif self.current_level == 'level2':
-            self.obstacle_liste, self.end_level = self.get_json_data(self.json_lvl2)
+            self.obstacle_liste, self.end_level = self.get_json_data(lvl2) #type: ignore
 
     def get_json_data(self, file):
         with open(file, 'r') as f:
