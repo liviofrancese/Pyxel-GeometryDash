@@ -18,7 +18,7 @@ class LevelEditor:
 
     def load_parameters(self):
         try:
-            with open('edit_var.json', 'r') as f:
+            with open('window.json', 'r') as f:
                 var_json = json.load(f)
                 self.choosen_obstacles = var_json['choosen_obstacles']
         except:
@@ -28,20 +28,20 @@ class LevelEditor:
         data = {
             "quit": True
         }
-        with open('others_var.json', 'w') as f:
+        with open('lvls.json', 'w') as f:
             json.dump(data, f, indent=4)
 
     def no_quit(self):
         data = {
             "quit": False
         }
-        with open('others_var.json', 'w') as f:
+        with open('lvls.json', 'w') as f:
             json.dump(data, f, indent=4)
 
 
     def editor_update(self):
         if not self.edit_var_init:
-            process = subprocess.Popen(["python", "edit_parameters.py"])
+            process = subprocess.Popen(["python", "edit_window.py"])
             self.edit_var_init = True
         self.load_parameters()
         self.no_quit()

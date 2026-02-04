@@ -2,7 +2,7 @@ import pyxel
 import json
 import os
 from menu import *
-from editlvls import LevelEditor
+from editlevels.editlvls import LevelEditor
 
 
 

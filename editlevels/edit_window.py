@@ -71,7 +71,7 @@ class EditParameters:
             data = {
                 'choosen_obstacles': self.choosen_obstacles
             }
-            with open('edit_var.json', 'w') as f:
+            with open('window.json', 'w') as f:
                 json.dump(data, f, indent=4)
 
     def choose_obstacle(self):
@@ -88,7 +88,7 @@ class EditParameters:
 
     def quit(self):
         try:
-            with open('others_var.json', 'r') as f:
+            with open('lvls.json', 'r') as f:
                 data = json.load(f)
                 if data['quit']:
                     pyxel.quit()
@@ -97,13 +97,13 @@ class EditParameters:
 
 
     def update(self):
-        #Toujours avec les bons paramètres
-        self.write_parameters()
-
-        self.quit()
-
+        
         #Choix obstacle
         self.choose_obstacle()
+
+        self.quit()
+        #Toujours avec les bons paramètres
+        self.write_parameters()
 
 
     def draw(self):

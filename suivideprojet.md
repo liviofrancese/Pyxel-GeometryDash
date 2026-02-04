@@ -157,3 +157,13 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### 📝 À faire:
 - Système automatique où quand on crée un nouveau niveau.json , le script gère automatiquement pour le niveau (DURE)
 - Bouton d'edition de niveau: savoir quel niveau éditer
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">04/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Une deuxième fenêtre pyxel apparait pour choisir les paramètres necessaires pour la modification du niveau
+### ⚠️ Problèmes Rencontrés:
+- Il faut créer un deuxième fichier qui sera lancé par le programme principale + pour transférer les données, il faut les mettres dans un fichier.json qui sera lu par le programme principale
