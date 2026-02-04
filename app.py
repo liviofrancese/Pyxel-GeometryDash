@@ -66,8 +66,7 @@ class Game:
         self.end_level_pourc = 0
         #json path
         self.levels_json()
-        self.launch_var_json()
-        
+        self.default_json_var()
         #Songs
         self.menu_song_var = False
         self.death_sound_var = False
@@ -81,10 +80,14 @@ class Game:
 
         pyxel.run(self.update, self.draw)
 
-    def launch_var_json(self):
-        with open("edit_valeurs.json", "w") as f:
-            data = {}
+
+    def default_json_var(self):
+        data = {
+            'choosen_obstacles': 'spike'
+        }
+        with open('edit_var.json', 'w') as f:
             json.dump(data, f, indent=4)
+
     
     def levels_json(self):
         #Fichiers où se trouvent les niveaux

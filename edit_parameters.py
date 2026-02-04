@@ -65,12 +65,14 @@ class EditParameters:
 
         pyxel.run(self.update, self.draw)
 
+
+
     def write_parameters(self):
-        data = {
-            'choosen_obstacles': self.choosen_obstacles
-        }
-        with open('edit_valeurs.json', 'w') as f:
-            json.dump(self.obstacles_list, f, indent=4)
+            data = {
+                'choosen_obstacles': self.choosen_obstacles
+            }
+            with open('edit_var.json', 'w') as f:
+                json.dump(data, f, indent=4)
 
     def choose_obstacle(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_spike+16 and pyxel.mouse_x > self.x_spike and pyxel.mouse_y < self.y_spike+16 and pyxel.mouse_y > self.y_spike:
@@ -84,9 +86,21 @@ class EditParameters:
         elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_orb+16 and pyxel.mouse_x > self.x_orb and pyxel.mouse_y < self.y_orb+16 and pyxel.mouse_y > self.y_orb:
             self.choosen_obstacles = 'orb'
 
+    def quit(self):
+        try:
+            with open('others_var.json', 'r') as f:
+                data = json.load(f)
+                if data['quit']:
+                    pyxel.quit()
+        except:
+            pass
+
+
     def update(self):
         #Toujours avec les bons paramètres
-        self.reload_parameters()
+        self.write_parameters()
+
+        self.quit()
 
         #Choix obstacle
         self.choose_obstacle()
