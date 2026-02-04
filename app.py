@@ -16,6 +16,12 @@ class Game:
 
         self.level_editor = LevelEditor(self)
 
+        self.folders = {
+            "default": os.getcwd(),
+            "levels": f"{os.getcwd()}\\levels",
+            "editlevels": f"{os.getcwd()}\\editlevels"
+        }
+
 
         #cube
         self.cube_x = 40

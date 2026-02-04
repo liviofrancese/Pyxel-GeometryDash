@@ -9,6 +9,8 @@ class EditParameters:
         self.screen_y = 200
         pyxel.init(self.screen_x, self.screen_y, quit_key=pyxel.KEY_P, title="GeometryDash")
         pyxel.mouse(True)
+
+        #geometrydash.pyxres qui se trouve dans le dossier parent
         parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         pyxres_path = os.path.join(parent_dir, "geometrydash.pyxres")
         pyxel.load(pyxres_path)

@@ -12,8 +12,6 @@ class LevelEditor:
         self.edit_var_init = False
         self.quit = False
 
-        self.main_folder = os.getcwd()
-        self.editlevels_folder = f"{self.main_folder}\\editlevels"
         #Level choosing
         self.choosing_level = 1
 
@@ -30,21 +28,21 @@ class LevelEditor:
         data = {
             "quit": True
         }
-        with open('lvls.json', 'w') as f:
+        with open(f"{self.game.folders['editlevels']}\\lvls.json", 'w') as f:
             json.dump(data, f, indent=4)
 
     def no_quit(self):
         data = {
             "quit": False
         }
-        with open('lvls.json', 'w') as f:
+        with open(f"{self.game.folders['editlevels']}\\lvls.json", 'w') as f:
             json.dump(data, f, indent=4)
 
 
     def editor_update(self):
         if not self.edit_var_init:
             self.no_quit()
-            process = subprocess.Popen(["python", f"{self.editlevels_folder}\\edit_window.py"])
+            process = subprocess.Popen(["python", f"{self.game.folders['editlevels']}\\edit_window.py"])
             self.edit_var_init = True
         self.load_parameters()
         self.no_quit()
