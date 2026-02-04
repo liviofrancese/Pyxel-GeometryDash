@@ -1,5 +1,6 @@
 import pyxel
 import json
+import os
 import subprocess
 
 class LevelEditor:
@@ -11,8 +12,9 @@ class LevelEditor:
         self.edit_var_init = False
         self.quit = False
 
-         #Level choosing
-
+        self.main_folder = os.getcwd()
+        self.editlevels_folder = f"{self.main_folder}\\editlevels"
+        #Level choosing
         self.choosing_level = 1
 
 
@@ -41,7 +43,8 @@ class LevelEditor:
 
     def editor_update(self):
         if not self.edit_var_init:
-            process = subprocess.Popen(["python", "edit_window.py"])
+            self.no_quit()
+            process = subprocess.Popen(["python", f"{self.editlevels_folder}\\edit_window.py"])
             self.edit_var_init = True
         self.load_parameters()
         self.no_quit()

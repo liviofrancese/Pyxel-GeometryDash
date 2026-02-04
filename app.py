@@ -85,7 +85,7 @@ class Game:
         data = {
             'choosen_obstacles': 'spike'
         }
-        with open('edit_var.json', 'w') as f:
+        with open('window.json', 'w') as f:
             json.dump(data, f, indent=4)
 
     
