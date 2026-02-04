@@ -1,0 +1,9 @@
+{
+    "screen_x": 300,
+    "screen_y": 200,
+    "cube_x": 40,
+    "cube_y_min": 150,
+    "gravity": 0.98,
+    "jump_strength": -7.5,
+    "velocity_x": 4.4
+}
