@@ -85,7 +85,12 @@ class Game:
         data = {
             'choosen_obstacles': 'spike'
         }
-        with open('window.json', 'w') as f:
+        with open(f"{os.getcwd()}\\editlevels\\window.json", 'w') as f:
+            json.dump(data, f, indent=4)
+        data = {
+            'quit': False
+        }
+        with open(f"{os.getcwd()}\\editlevels\\lvls.json", 'w') as f:
             json.dump(data, f, indent=4)
 
     

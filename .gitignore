@@ -19,3 +19,7 @@ ENV/
 # Fichiers de config sensibles
 .env
 *.log
+
+#json changing
+editlevels/lvls.json
+editlevels/window.json
