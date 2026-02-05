@@ -175,3 +175,6 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ## 📅 <span style="color:orange">05/01/2026:</span>
 ### ✅ Ajouts / Changements:
 - Plus de deuxième fenêtre car sinon trop de bugs + pas la même mémoire des variables (et json ferait le programme lent)
+- Obstacle sur la souris
+### 📝 À faire:
+- Lors d'un clic, l'obstacle se mets sur l'écran

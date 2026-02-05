@@ -9,12 +9,12 @@ class LevelEditor:
         #init all variables
         self.game = game
         self.in_editor = False
-        self.hello = False
-        self.quit = False
 
         #Level choosing
         self.choosing_level = 1
-        self.default_parameters()
+        self.choosen_obstacles = 'spike'
+        self.mouse_x = 0
+        self.mouse_y = 0
 
         self.obstacles_pos = {
             'spike': {'x': 5, 'y': self.game.screen_y-40},
@@ -23,10 +23,9 @@ class LevelEditor:
             'mur': {'x': 45, 'y': self.game.screen_y-40},
             'orb': {'x': 65, 'y': self.game.screen_y-40}
         }
+      
 
 
-    def default_parameters(self):
-        self.choosen_obstacles = 'spike'
 
     def quit_editor(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 5+16 and pyxel.mouse_x > 5 and pyxel.mouse_y < 5+16 and pyxel.mouse_y > 5 or pyxel.btnp(pyxel.KEY_ESCAPE):
@@ -75,10 +74,22 @@ class LevelEditor:
             pyxel.rectb(self.obstacles_pos['orb']['x']-2, self.obstacles_pos['orb']['y']-2, 20, 20, 10)
         pyxel.blt(self.obstacles_pos['orb']['x'], self.obstacles_pos['orb']['y'], self.game.obstacles_list['orb']['image'], self.game.obstacles_list['orb']['x'], self.game.obstacles_list['orb']['y'], self.game.obstacles_list['orb']['width'], self.game.obstacles_list['orb']['height'], 0)
 
+    def draw_instructions(self):
+        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-8, f"Obstacle choisis: {self.choosen_obstacles}", 0)
+        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-18, "Fleches: Camera", 0)
+        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-28, "Click gauche: Ajouter", 0)
+        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-38, "Click droit: Supprimer", 0)
+
+    def mouse_pos(self):
+        self.mouse_x = pyxel.mouse_x
+        self.mouse_y = pyxel.mouse_y
+        if self.mouse_y >= self.game.cube_y_min+8:
+            self.mouse_y = self.game.cube_y_min+8
 
     def editor_update(self):
         self.choose_obstacle()
         self.saving()
+        self.mouse_pos()
         #Quit editor
         self.quit_editor()
 
@@ -91,10 +102,7 @@ class LevelEditor:
         pyxel.rect(0, self.game.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
 
         self.draw_obstacles_to_choose()
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-8, f"Obstacle choisis: {self.choosen_obstacles}", 0)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-18, "Fleches: Camera", 0)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-28, "Click gauche: Ajouter", 0)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-38, "Click droit: Supprimer", 0)
+        self.draw_instructions()
         
         #Save Level
         pyxel.rect(self.game.screen_x-48, 8, 44, 10, 10)
@@ -104,5 +112,5 @@ class LevelEditor:
         pyxel.text(self.game.screen_x-40, 22, "Save As", 0)
 
         #Obstacle on mouse
-        pyxel.blt(pyxel.mouse_x, pyxel.mouse_y, self.game.obstacles_list[self.choosen_obstacles]['image'], self.game.obstacles_list[self.choosen_obstacles]['x'], self.game.obstacles_list[self.choosen_obstacles]['y'], self.game.obstacles_list[self.choosen_obstacles]['width'], self.game.obstacles_list[self.choosen_obstacles]['height'], 0)
+        pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.obstacles_list[self.choosen_obstacles]['image'], self.game.obstacles_list[self.choosen_obstacles]['x'], self.game.obstacles_list[self.choosen_obstacles]['y'], self.game.obstacles_list[self.choosen_obstacles]['width'], self.game.obstacles_list[self.choosen_obstacles]['height'], 0)
 
