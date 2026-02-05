@@ -1,6 +1,6 @@
 import pyxel
-import json
 import os
+from editlvls import LevelEditor
 
 class EditParameters:
 
@@ -9,7 +9,7 @@ class EditParameters:
         self.screen_y = 200
         pyxel.init(self.screen_x, self.screen_y, quit_key=pyxel.KEY_P, title="GeometryDash")
         pyxel.mouse(True)
-
+        self.editlvls = LevelEditor(self)
         #geometrydash.pyxres qui se trouve dans le dossier parent
         parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         pyxres_path = os.path.join(parent_dir, "geometrydash.pyxres")
@@ -28,7 +28,8 @@ class EditParameters:
 
 
 
-        self.choosen_obstacles = 'spike'
+
+
         self.obstacles_list = {
             'spike': {
                 'image': 0,
@@ -72,65 +73,77 @@ class EditParameters:
 
 
 
-    def write_parameters(self):
-            data = {
-                'choosen_obstacles': self.choosen_obstacles
-            }
-            with open('window.json', 'w') as f:
-                json.dump(data, f, indent=4)
 
     def choose_obstacle(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_spike+16 and pyxel.mouse_x > self.x_spike and pyxel.mouse_y < self.y_spike+16 and pyxel.mouse_y > self.y_spike:
-            self.choosen_obstacles = 'spike'
+            self.editlvls.choosen_obstacles = 'spike'
         elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_turned_spike+16 and pyxel.mouse_x > self.x_turned_spike and pyxel.mouse_y < self.y_turned_spike+16 and pyxel.mouse_y > self.y_turned_spike:
-            self.choosen_obstacles = 'turned spike'
+            self.editlvls.choosen_obstacles = 'turned spike'
         elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_block+16 and pyxel.mouse_x > self.x_block and pyxel.mouse_y < self.y_block+16 and pyxel.mouse_y > self.y_block:
-            self.choosen_obstacles = 'block'
+            self.editlvls.choosen_obstacles = 'block'
         elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_mur+16 and pyxel.mouse_x > self.x_mur and pyxel.mouse_y < self.y_mur+16 and pyxel.mouse_y > self.y_mur:
-            self.choosen_obstacles = 'mur'
+            self.editlvls.choosen_obstacles = 'mur'
         elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.x_orb+16 and pyxel.mouse_x > self.x_orb and pyxel.mouse_y < self.y_orb+16 and pyxel.mouse_y > self.y_orb:
-            self.choosen_obstacles = 'orb'
+            self.editlvls.choosen_obstacles = 'orb'
 
-    def quit(self):
-        try:
-            with open('lvls.json', 'r') as f:
-                data = json.load(f)
-                if data['quit']:
-                    pyxel.quit()
-        except:
-            pass
+
+  
+
+    def saving(self):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 3+44 and pyxel.mouse_x > 3 and pyxel.mouse_y < 8+10 and pyxel.mouse_y > 10:
+            self.editlvls.save_level = True
+            print('Save Level')
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 3+32 and pyxel.mouse_x > 3 and pyxel.mouse_y < 20+10 and pyxel.mouse_y > 20:
+            self.editlvls.save_as = True
+            print('Save As')
 
 
     def update(self):
-        
         #Choix obstacle
         self.choose_obstacle()
 
-        self.quit()
-        #Toujours avec les bons paramètres
-        self.write_parameters()
+        #Save
+        self.saving()
+
+        #Quit
+        if self.editlvls.window_quit:
+             pyxel.quit()
+
+        
 
 
     def draw(self):
         pyxel.cls(7)
-        pyxel.text(5, 10, "ESC: Quit", 0)
-        pyxel.text(5, 20, "F1: Save Level", 0)
-        pyxel.text(80, 10, "F2: Save As", 0)
-        pyxel.text(80, 20, "T: Turn", 0)
+        #Save Level
+        pyxel.rect(3, 8, 44, 10, 10)
+        pyxel.text(5, 10, "Save Level", 0)
+        #Save As
+        pyxel.rect(3, 20, 32, 10, 10)
+        pyxel.text(5, 22, "Save As", 0)
         pyxel.text(155, 10, "Fleches: Camera", 0)
         pyxel.text(155, 20, "Click gauche: Ajouter/Supprimer", 0)
 
-        pyxel.text(10, 50, f"Obstacle choisis: {self.choosen_obstacles}", 0)
+        pyxel.text(10, 50, f"Obstacle choisis: {self.editlvls.choosen_obstacles}", 0)
         
 
         #Spike
-        pyxel.blt(self.x_spike, self.y_spike, img=self.obstacles_list['spike']['image'], u=self.obstacles_list['spike']['x'], v=self.obstacles_list['spike']['y'], w=self.obstacles_list['spike']['width'], h=self.obstacles_list['spike']['height'], colkey=0)
+        if self.editlvls.choosen_obstacles == 'spike':
+            pyxel.rectb(self.x_spike-2, self.y_spike-2, 20, 20, 10)
+        pyxel.blt(self.x_spike, self.y_spike, self.obstacles_list['spike']['image'], self.obstacles_list['spike']['x'], self.obstacles_list['spike']['y'], self.obstacles_list['spike']['width'], self.obstacles_list['spike']['height'], 0)
         #Turned spike
-        pyxel.blt(self.x_turned_spike, self.y_turned_spike, img=self.obstacles_list['turned spike']['image'], u=self.obstacles_list['turned spike']['x'], v=self.obstacles_list['turned spike']['y'], w=self.obstacles_list['turned spike']['width'], h=self.obstacles_list['turned spike']['height'], colkey=0)
+        if self.editlvls.choosen_obstacles == 'turned spike':
+            pyxel.rectb(self.x_turned_spike-2, self.y_turned_spike-2, 20, 20, 10)
+        pyxel.blt(self.x_turned_spike, self.y_turned_spike, self.obstacles_list['turned spike']['image'], self.obstacles_list['turned spike']['x'], self.obstacles_list['turned spike']['y'], self.obstacles_list['turned spike']['width'], self.obstacles_list['turned spike']['height'], 0)
         #Block
-        pyxel.blt(self.x_block, self.y_block, img=self.obstacles_list['block']['image'], u=self.obstacles_list['block']['x'], v=self.obstacles_list['block']['y'], w=self.obstacles_list['block']['width'], h=self.obstacles_list['block']['height'], colkey=0)
+        if self.editlvls.choosen_obstacles == 'block':
+            pyxel.rectb(self.x_block-2, self.y_block-2, 20, 20, 10)
+        pyxel.blt(self.x_block, self.y_block, self.obstacles_list['block']['image'], self.obstacles_list['block']['x'], self.obstacles_list['block']['y'], self.obstacles_list['block']['width'], self.obstacles_list['block']['height'], 0)
         #Mur
-        pyxel.blt(self.x_mur, self.y_mur, img=self.obstacles_list['mur']['image'], u=self.obstacles_list['mur']['x'], v=self.obstacles_list['mur']['y'], w=self.obstacles_list['mur']['width'], h=self.obstacles_list['mur']['height'], colkey=0)
+        if self.editlvls.choosen_obstacles == 'mur':
+            pyxel.rectb(self.x_mur-2, self.y_mur-2, 20, 20, 10)
+        pyxel.blt(self.x_mur, self.y_mur, self.obstacles_list['mur']['image'], self.obstacles_list['mur']['x'], self.obstacles_list['mur']['y'], self.obstacles_list['mur']['width'], self.obstacles_list['mur']['height'], 0)
         #Orb
-        pyxel.blt(self.x_orb, self.y_orb, img=self.obstacles_list['orb']['image'], u=self.obstacles_list['orb']['x'], v=self.obstacles_list['orb']['y'], w=self.obstacles_list['orb']['width'], h=self.obstacles_list['orb']['height'], colkey=0)
+        if self.editlvls.choosen_obstacles == 'orb':
+            pyxel.rectb(self.x_orb-2, self.y_orb-2, 20, 20, 10)
+        pyxel.blt(self.x_orb, self.y_orb, self.obstacles_list['orb']['image'], self.obstacles_list['orb']['x'], self.obstacles_list['orb']['y'], self.obstacles_list['orb']['width'], self.obstacles_list['orb']['height'], 0)
 EditParameters()

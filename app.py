@@ -70,9 +70,45 @@ class Game:
         self.finish_level = False
         self.end_level = 0
         self.end_level_pourc = 0
+        self.obstacles_list = {
+            'spike': {
+                'image': 0,
+                'x': 16,
+                'y': 16,
+                'width': 16,
+                'height': 16
+            },
+            'turned spike': {
+                'image': 0,
+                'x': 16,
+                'y': 32,
+                'width': 16,
+                'height': 16
+            },
+            'block': {
+                'image': 0,
+                'x': 32,
+                'y': 16,
+                'width': 16,
+                'height': 16
+            },
+            'mur': {
+                'image': 0,
+                'x': 0,
+                'y': 16,
+                'width': 16,
+                'height': 16
+            },
+            'orb': {
+                'image': 0,
+                'x': 48,
+                'y': 16,
+                'width': 16,
+                'height': 16
+            }
+        }
         #json path
         self.levels_json()
-        self.default_json_var()
         #Songs
         self.menu_song_var = False
         self.death_sound_var = False
@@ -87,17 +123,6 @@ class Game:
         pyxel.run(self.update, self.draw)
 
 
-    def default_json_var(self):
-        data = {
-            'choosen_obstacles': 'spike'
-        }
-        with open(f"{os.getcwd()}\\editlevels\\window.json", 'w') as f:
-            json.dump(data, f, indent=4)
-        data = {
-            'quit': False
-        }
-        with open(f"{os.getcwd()}\\editlevels\\lvls.json", 'w') as f:
-            json.dump(data, f, indent=4)
 
     
     def levels_json(self):
