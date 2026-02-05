@@ -167,3 +167,11 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - Une deuxième fenêtre pyxel apparait pour choisir les paramètres necessaires pour la modification du niveau
 ### ⚠️ Problèmes Rencontrés:
 - Il faut créer un deuxième fichier qui sera lancé par le programme principale + pour transférer les données, il faut les mettres dans un fichier.json qui sera lu par le programme principale
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">05/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Plus de deuxième fenêtre car sinon trop de bugs + pas la même mémoire des variables (et json ferait le programme lent)
