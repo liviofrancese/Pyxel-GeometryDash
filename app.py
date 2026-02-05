@@ -26,7 +26,7 @@ class Game:
         #cube
         self.cube_x = 40
         self.cube_x_pourc = 0
-        self.cube_y_min = 150
+        self.cube_y_min = 140
         self.cube_y = self.cube_y_min
         self.y_min = self.cube_y_min
         self.cube_rotation = 0
