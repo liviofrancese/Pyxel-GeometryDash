@@ -2,7 +2,7 @@ import pyxel
 import json
 import os
 from menu import *
-from editlevels.editlvls import LevelEditor
+from editlvls import LevelEditor
 
 
 
@@ -70,7 +70,7 @@ class Game:
         self.finish_level = False
         self.end_level = 0
         self.end_level_pourc = 0
-        self.obstacles_list = {
+        self.obstacles_pyxres = {
             'spike': {
                 'image': 0,
                 'x': 16,

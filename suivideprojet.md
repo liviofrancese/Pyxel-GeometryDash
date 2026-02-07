@@ -188,6 +188,7 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### ✅ Ajouts / Changements:
 - Affichage des obstacles du niveau
 - Placement des obstacles dans l'éditeur
+- Enlevement des obstacles
 - Naviguer dans le niveau grâce aux flèches
 - Sauvegarder dans un nouveau fichier json
 ### ⚠️ Problèmes Rencontrés:
