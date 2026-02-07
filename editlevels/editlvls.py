@@ -47,6 +47,7 @@ class LevelEditor:
             self.initialisation = False
             self.camera_x = 0
             self.camera_y = 0
+            self.game.menu_song_var = False
     def mouse_pos(self):
         self.mouse_x = pyxel.mouse_x
         self.mouse_y = pyxel.mouse_y
@@ -79,6 +80,8 @@ class LevelEditor:
             return
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
             self.obstacles_temp.append({"x": self.mouse_x-8+self.camera_x, "y": self.mouse_y-8, "type": self.choosen_obstacles, "turned": self.turned, "used": self.used})
+    def remove_obstacle(self):
+        pass
     def saving(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-4 and pyxel.mouse_x > self.game.screen_x-48 and pyxel.mouse_y < 8+10 and pyxel.mouse_y > 10:
             print('Save Level')
