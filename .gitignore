@@ -19,3 +19,6 @@ ENV/
 # Fichiers de config sensibles
 .env
 *.log
+
+#json
+test.json

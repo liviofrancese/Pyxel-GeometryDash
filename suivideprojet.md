@@ -178,3 +178,17 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - Obstacle sur la souris
 ### 📝 À faire:
 - Lors d'un clic, l'obstacle se mets sur l'écran
+
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">07/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Affichage des obstacles du niveau
+- Placement des obstacles dans l'éditeur
+- Naviguer dans le niveau grâce aux flèches
+- Sauvegarder dans un nouveau fichier json
+### ⚠️ Problèmes Rencontrés:
+- L'obstacle ne voulait pas se placer au bon endroit
