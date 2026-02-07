@@ -190,22 +190,14 @@ class Game:
 
 #level
     def reset_obstacles(self):
-        if self.current_level == 'lvl1':
-            self.obstacle_liste, self.end_level = self.get_json_data(self.levels["lvl1"]) #type: ignore
-        elif self.current_level == 'lvl2':
-            self.obstacle_liste, self.end_level = self.get_json_data(self.levels["lvl2"]) #type: ignore
+        self.obstacle_liste, self.end_level = self.get_json_data(self.levels[self.current_level]) #type: ignore
+
 
     def get_json_data(self, file):
         with open(file, 'r') as f:
             data = json.load(f)
             level_length = data['level_length']
             obstacle_liste = data['obstacles']
-            for obstacle in obstacle_liste:
-                obstacle['y'] += self.y_min
-                if obstacle['type']=='orb' and 'used' not in obstacle:
-                    obstacle['used'] = False
-                if obstacle['type']=='spike' and 'turned' not in obstacle:
-                    obstacle['turned'] = False
         return obstacle_liste, level_length
 
     def level_init(self):

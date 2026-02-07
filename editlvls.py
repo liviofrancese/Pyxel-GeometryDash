@@ -12,6 +12,7 @@ class LevelEditor:
         self.custum_level = "levels\\custum_level.json"
 
         self.initialisation = False
+        self.lvl_json_path = None
         self.camera_x = 0
         self.camera_y = 0
 
@@ -28,6 +29,7 @@ class LevelEditor:
         self.no_place_obstacle = 0
 
         self.obstacles_temp = []
+        self.end_of_level = None
 
         self.obstacles_pos = {
             'place': {'x': 1, 'y': self.game.screen_y-40},
@@ -50,6 +52,7 @@ class LevelEditor:
             self.initialisation = False
             self.camera_x = 0
             self.camera_y = 0
+            self.choosen_placement = 'place'
             self.game.menu_song_var = False
     def mouse_pos(self):
         self.mouse_x = pyxel.mouse_x
@@ -86,15 +89,16 @@ class LevelEditor:
         if not self.initialisation:
             self.game.reset_obstacles()
             self.obstacles_temp = self.game.obstacle_liste
+            self.end_of_level = self.game.end_level
             self.initialisation = True
     def place_obstacle(self):
         if self.no_place_obstacle < 2:
             return
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
+        if self.choose_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
             self.obstacles_temp.append({"x": self.mouse_x-8+self.camera_x, "y": self.mouse_y-8, "type": self.choosen_obstacles, "turned": self.turned, "used": self.used})
 
     def remove_obstacle(self):
-        if self.choosen_placement == 'delete' and pyxel.btnp(pyxel.MOUSE_BUTTON_RIGHT):
+        if self.choosen_placement == 'delete' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             for obstacle in self.obstacles_temp:
                 obstacle_x = obstacle['x']-self.camera_x
                 obstacle_y = obstacle['y']-self.camera_y
@@ -104,18 +108,22 @@ class LevelEditor:
                     return
                     
 
+    def write_json(self, file, data):
+        with open (file, "w") as f:
+            data = {"level_length": self.end_of_level, "obstacles": data}
+            json.dump(data, f, indent=4)
+
     def saving(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-4 and pyxel.mouse_x > self.game.screen_x-48 and pyxel.mouse_y < 8+10 and pyxel.mouse_y > 10:
             print('Save Level')
+            self.write_json(self.game.levels[self.game.current_level], self.obstacles_temp)
+            self.lvl_json_path = self.game.levels[self.game.current_level]
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-11 and pyxel.mouse_x > self.game.screen_x-43 and pyxel.mouse_y < 20+10 and pyxel.mouse_y > 20:
             print('Save As')
             while os.path.exists(self.custum_level):
                 self.custum_level = f"levels\\custum_level{self.new_json_file}.json"
                 self.new_json_file += 1
-
-            with open (self.custum_level, "w") as f:
-                data = self.obstacles_temp
-                json.dump(data, f, indent=3)
+            self.write_json(self.custum_level, self.obstacles_temp)
             self.custum_level = "levels\\custum_level.json"
             self.new_json_file = 1
     def move_camera(self):
@@ -143,6 +151,7 @@ class LevelEditor:
     def draw_placement_to_choose(self):
         pyxel.blt(self.obstacles_pos['place']['x'], self.obstacles_pos['place']['y'], 1, 104, 0, 16, 16, 0)
         pyxel.blt(self.obstacles_pos['delete']['x'], self.obstacles_pos['delete']['y'], 1, 120, 0, 16, 16, 0)
+        pyxel.rectb(self.obstacles_pos[self.choosen_placement]['x']-1, self.obstacles_pos[self.choosen_placement]['y']-1, 18, 18,2)
     
     def draw_obstacles_to_choose(self):
         #Spike
@@ -163,8 +172,6 @@ class LevelEditor:
     def draw_instructions(self):
         pyxel.text(self.game.screen_x/2+25, self.game.screen_y-8, f"Obstacle choisis: {self.choosen_obstacles}", 0)
         pyxel.text(self.game.screen_x/2+25, self.game.screen_y-18, "Fleches: Camera", 0)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-28, "Click gauche: Ajouter", 0)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-38, "Click droit: Supprimer", 0)
 
     def editor_update(self):
         self.editor_init()
