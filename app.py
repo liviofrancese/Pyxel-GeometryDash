@@ -60,7 +60,7 @@ class Game:
         self.ESC_level = False
         self.current_level = None
         self.chosen_level = 1
-        self.chosen_level_max = 2
+        self.chosen_level_max = 0
 
 
         #Obstacles
@@ -117,7 +117,7 @@ class Game:
             'spike': {
                 'obs_gauche': 4,
                 'obs_droit': 11,
-                'obs_haut': 7,
+                'obs_haut': 0,
                 'obs_bas': 16
             },
             'turned spike': {
@@ -169,10 +169,12 @@ class Game:
         levels_folder = f"{os.getcwd()}\\levels"
         self.levels = {}
         for filename in os.listdir(levels_folder):
-            if filename.endswith(".json"):
+            if filename.endswith(".json") and filename.startswith("lvl"):
                 #Créer une variable avec l'emplacement du fichier.json
                 var_name = filename.replace(".json", "")
                 self.levels[var_name] = f"{levels_folder}\\{filename}"
+                self.chosen_level_max += 1
+                
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -284,15 +286,22 @@ class Game:
                 if pyxel.btnp(pyxel.KEY_R):
                     self.level_initialisation = False
     def collision(self, obstacle): #Utilisé dans obstacles_gestion()
-
         #obstacle hors écran
         if obstacle['x'] > self.screen_x:
             return False
 
+        #Mise à jour de la position du cube
+        self.collisions['cube'] = {
+                'cube_gauche': self.cube_x,
+                'cube_droit': self.cube_x+16,
+                'cube_haut': self.cube_y,
+                'cube_bas': self.cube_y+16
+            }
+
         obs_gauche = obstacle['x']+self.collisions[obstacle['type']]['obs_gauche']
         obs_droit = obstacle['x']+self.collisions[obstacle['type']]['obs_droit']
-        obs_haut = obstacle['x']+self.collisions[obstacle['type']]['obs_haut']
-        obs_bas = obstacle['x']+self.collisions[obstacle['type']]['obs_bas']
+        obs_haut = obstacle['y']+self.collisions[obstacle['type']]['obs_haut']
+        obs_bas = obstacle['y']+self.collisions[obstacle['type']]['obs_bas']
 
         if (self.collisions['cube']['cube_droit'] > obs_gauche and self.collisions['cube']['cube_gauche'] < obs_droit and self.collisions['cube']['cube_bas'] > obs_haut and self.collisions['cube']['cube_haut'] < obs_bas):
             return True

@@ -325,6 +325,20 @@
             "x": 1420,
             "y": 140,
             "type": "spike"
+        },
+        {
+            "x": 233,
+            "y": 58,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 212,
+            "y": 66,
+            "type": "spike",
+            "turned": false,
+            "used": false
         }
     ]
 }

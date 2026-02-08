@@ -203,6 +203,8 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
     - Fin de niveau sauvegardé automatiquement dans le fichier.json du niveau ( avec max() )
     - Fix bugs
     - optimisation du code
-- optimisation + meilleur automatisation
+- optimisation
+- automatisation
 ### 📝 À faire:
 - Finir le lvl2
+- Faire d'autres dessins du choix du niveau
