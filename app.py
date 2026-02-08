@@ -411,16 +411,11 @@ class Game:
         #Obstacles
         for obstacle in self.obstacle_liste:
             if obstacle['x'] < self.screen_x:
-                if obstacle['type']=='spike' and obstacle['turned']==False:
-                    pyxel.blt(obstacle['x'], obstacle['y'], 0, 16, 16, 16, 16, 0)
-                if obstacle['type']=='spike' and obstacle['turned']==True:
-                    pyxel.blt(obstacle['x'], obstacle['y'], 0, 16, 32, 16, 16, 0)
-                if obstacle['type']=='block':
-                    pyxel.blt(obstacle['x'], obstacle['y'], 0, 32, 16, 16, 16)
-                if obstacle['type']=='mur':
-                    pyxel.blt(obstacle['x'], obstacle['y'], 0, 0, 16, 16, 16)
-                if obstacle['type']=='orb':
-                    pyxel.blt(obstacle['x'], obstacle['y'], 0, 48, 16, 16, 16, 0)
+                if obstacle['type'] == 'spike' and obstacle['turned']==True:
+                    obstacle_name = 'turned spike'
+                else:
+                    obstacle_name = obstacle['type']
+                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle_name]['image'], self.obstacles_pyxres[obstacle_name]['x'], self.obstacles_pyxres[obstacle_name]['y'], self.obstacles_pyxres[obstacle_name]['width'], self.obstacles_pyxres[obstacle_name]['height'], 0)
 
         if self.game_over:
             pyxel.text(70, 70, "GAME OVER", 8)
