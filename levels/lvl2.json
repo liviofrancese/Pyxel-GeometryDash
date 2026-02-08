@@ -431,8 +431,8 @@
         {
             "x": 1295,
             "y": 28,
-            "type": "spike",
-            "turned": true,
+            "type": "turned spike",
+            "turned": false,
             "used": false
         },
         {

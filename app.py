@@ -256,7 +256,7 @@ class Game:
         cube_bas = self.cube_y+16
 
         #Hitbox spike:
-        if obstacle['type']=='spike':
+        if obstacle['type']=='spike' or obstacle['type']=='turned spike':
             obs_gauche = obstacle['x']+4
             obs_droit = obstacle['x']+11
             obs_haut = obstacle['y']+7
@@ -411,11 +411,8 @@ class Game:
         #Obstacles
         for obstacle in self.obstacle_liste:
             if obstacle['x'] < self.screen_x:
-                if obstacle['type'] == 'spike' and obstacle['turned']==True:
-                    obstacle_name = 'turned spike'
-                else:
-                    obstacle_name = obstacle['type']
-                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle_name]['image'], self.obstacles_pyxres[obstacle_name]['x'], self.obstacles_pyxres[obstacle_name]['y'], self.obstacles_pyxres[obstacle_name]['width'], self.obstacles_pyxres[obstacle_name]['height'], 0)
+                obstacle_type = obstacle['type']
+                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle_type]['image'], self.obstacles_pyxres[obstacle_type]['x'], self.obstacles_pyxres[obstacle_type]['y'], self.obstacles_pyxres[obstacle_type]['width'], self.obstacles_pyxres[obstacle_type]['height'], 0)
 
         if self.game_over:
             pyxel.text(70, 70, "GAME OVER", 8)
