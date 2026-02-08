@@ -107,6 +107,45 @@ class Game:
                 'height': 16
             }
         }
+        self.collisions = {
+            'cube': {
+                'cube_gauche': self.cube_x,
+                'cube_droit': self.cube_x+16,
+                'cube_haut': self.cube_y,
+                'cube_bas': self.cube_y+16
+            },
+            'spike': {
+                'obs_gauche': 4,
+                'obs_droit': 11,
+                'obs_haut': 7,
+                'obs_bas': 16
+            },
+            'turned spike': {
+                'obs_gauche': 4,
+                'obs_droit': 11,
+                'obs_haut': 7,
+                'obs_bas': 16
+            },
+            'block': {
+                'obs_gauche': 0,
+                'obs_droit': 16,
+                'obs_haut': 0,
+                'obs_bas': 16
+            },
+            'mur': {
+                'obs_gauche': 0,
+                'obs_droit': 16,
+                'obs_haut': 0,
+                'obs_bas': 16
+            },
+            'orb': {
+                'obs_gauche': 0,
+                'obs_droit': 16,
+                'obs_haut': 0,
+                'obs_bas': 16
+            }
+        }
+
         #json path
         self.levels_json()
         #Songs
@@ -246,29 +285,16 @@ class Game:
                     self.level_initialisation = False
     def collision(self, obstacle): #Utilisé dans obstacles_gestion()
 
-        #Si l'obstacle est hors de l'écran:
+        #obstacle hors écran
         if obstacle['x'] > self.screen_x:
             return False
 
-        cube_gauche = self.cube_x
-        cube_droit = self.cube_x+16
-        cube_haut = self.cube_y
-        cube_bas = self.cube_y+16
+        obs_gauche = obstacle['x']+self.collisions[obstacle['type']]['obs_gauche']
+        obs_droit = obstacle['x']+self.collisions[obstacle['type']]['obs_droit']
+        obs_haut = obstacle['x']+self.collisions[obstacle['type']]['obs_haut']
+        obs_bas = obstacle['x']+self.collisions[obstacle['type']]['obs_bas']
 
-        #Hitbox spike:
-        if obstacle['type']=='spike' or obstacle['type']=='turned spike':
-            obs_gauche = obstacle['x']+4
-            obs_droit = obstacle['x']+11
-            obs_haut = obstacle['y']+7
-            obs_bas = obstacle['y']+16
-
-        #Hitbox block et mur:
-        elif obstacle['type']=='block' or obstacle['type']=='mur' or obstacle['type']=='orb':
-            obs_gauche = obstacle['x']
-            obs_droit = obstacle['x'] + 16
-            obs_haut = obstacle['y']
-            obs_bas = obstacle['y'] + 16
-        if (cube_droit > obs_gauche and cube_gauche < obs_droit and cube_bas > obs_haut and cube_haut < obs_bas):
+        if (self.collisions['cube']['cube_droit'] > obs_gauche and self.collisions['cube']['cube_gauche'] < obs_droit and self.collisions['cube']['cube_bas'] > obs_haut and self.collisions['cube']['cube_haut'] < obs_bas):
             return True
         return False
     def cube_jump_rot(self):
@@ -411,8 +437,7 @@ class Game:
         #Obstacles
         for obstacle in self.obstacle_liste:
             if obstacle['x'] < self.screen_x:
-                obstacle_type = obstacle['type']
-                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle_type]['image'], self.obstacles_pyxres[obstacle_type]['x'], self.obstacles_pyxres[obstacle_type]['y'], self.obstacles_pyxres[obstacle_type]['width'], self.obstacles_pyxres[obstacle_type]['height'], 0)
+                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle['type']]['image'], self.obstacles_pyxres[obstacle['type']]['x'], self.obstacles_pyxres[obstacle['type']]['y'], self.obstacles_pyxres[obstacle['type']]['width'], self.obstacles_pyxres[obstacle['type']]['height'], 0)
 
         if self.game_over:
             pyxel.text(70, 70, "GAME OVER", 8)

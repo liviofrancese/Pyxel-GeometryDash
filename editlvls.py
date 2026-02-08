@@ -135,16 +135,8 @@ class LevelEditor:
     def draw_obstacles(self):
         for obstacle in self.obstacles_temp:
             if obstacle['x']-self.camera_x < self.game.screen_x:
-                if obstacle['type']=='spike' and obstacle['turned']==False:
-                    pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 16, 16, 16, 16, 0)
-                if obstacle['type']=='spike' and obstacle['turned']==True:
-                    pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 16, 32, 16, 16, 0)
-                if obstacle['type']=='block':
-                    pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 32, 16, 16, 16)
-                if obstacle['type']=='mur':
-                    pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 0, 16, 16, 16)
-                if obstacle['type']=='orb':
-                    pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 48, 16, 16, 16, 0)
+                pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.obstacles_pyxres[obstacle['type']]['image'], self.game.obstacles_pyxres[obstacle['type']]['x'], self.game.obstacles_pyxres[obstacle['type']]['y'], self.game.obstacles_pyxres[obstacle['type']]['width'], self.game.obstacles_pyxres[obstacle['type']]['height'], 0)
+
         #Finish line
         self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+25
         if self.end_of_level-self.camera_x < self.game.screen_x:
