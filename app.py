@@ -272,7 +272,7 @@ class Game:
 
             #Utilisation de l'orb
             if obstacle['type']=='orb':
-                if obstacle['used']==False and self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE): #A CONTINUER
+                if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE): #A CONTINUER
                     self.jumping()
                     obstacle['used']=True
 

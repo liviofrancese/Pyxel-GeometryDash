@@ -5,11 +5,8 @@ with open("levels\\lvl2.json", 'r') as f:
     level_length = data['level_length']
     obstacle_liste = data['obstacles']
     for obstacle in obstacle_liste:
-        obstacle['y'] += 140
-        if 'used' not in obstacle:
-            obstacle['used'] = False
-        if 'turned' not in obstacle:
-            obstacle['turned'] = False
+        if 'used' in obstacle:
+            del obstacle['used']
 
 with open("normal.json", 'w') as f:
     data = {"level_length": level_length, "obstacles": obstacle_liste}
