@@ -146,7 +146,7 @@ class LevelEditor:
                 if obstacle['type']=='orb':
                     pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], 0, 48, 16, 16, 16, 0)
         #Finish line
-        self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+20
+        self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+25
         if self.end_of_level-self.camera_x < self.game.screen_x:
             pyxel.line(self.end_of_level-self.camera_x, 0, self.end_of_level-self.camera_x, self.game.y_min+16, 4)
     
@@ -201,12 +201,11 @@ class LevelEditor:
         #Save As
         pyxel.rect(self.game.screen_x-43, 20, 32, 10, 10)
         pyxel.text(self.game.screen_x-40, 22, "Save As", 0)
-        pyxel.text(20, 20, str(self.end_of_level), 7)
         #Camera
         pyxel.text(self.game.screen_x/2+50, 5, f"Camera: {self.camera_x}",7)
 
         pyxel.text(30, 5, f"Obstacle choisis: {self.choosen_obstacles}", 7)
-        pyxel.text(self.game.screen_x/2+25, self.game.screen_y-18, "Fleches: Camera", 0)
+        pyxel.text(self.game.screen_x-65, self.game.cube_y_min+22, "Fleches: Camera", 0)
 
         #Obstacle on mouse
         if self.choosen_placement == 'place':
