@@ -128,69 +128,6 @@
             "turned": false
         },
         {
-            "x": 832,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 870,
-            "y": 108,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 870,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 870,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 902,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 902,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 934,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 886,
-            "y": 140,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 918,
-            "y": 140,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
             "x": 1060,
             "y": 140,
             "type": "spike",
@@ -240,34 +177,6 @@
             "turned": false
         },
         {
-            "x": 1270,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1270,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1300,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1350,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
             "x": 1366,
             "y": 124,
             "type": "block",
@@ -292,13 +201,6 @@
             "x": 1414,
             "y": 124,
             "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1350,
-            "y": 108,
-            "type": "spike",
             "used": false,
             "turned": false
         },
@@ -339,13 +241,6 @@
         },
         {
             "x": 1480,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1543,
             "y": 124,
             "type": "block",
             "used": false,
@@ -376,13 +271,6 @@
             "x": 1607,
             "y": 124,
             "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1543,
-            "y": 108,
-            "type": "spike",
             "used": false,
             "turned": false
         },
@@ -495,34 +383,6 @@
             "x": 1894,
             "y": 71,
             "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 1994,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2044,
-            "y": 124,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2044,
-            "y": 140,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2084,
-            "y": 108,
-            "type": "block",
             "used": false,
             "turned": false
         },
@@ -618,20 +478,6 @@
             "turned": false
         },
         {
-            "x": 2125,
-            "y": 92,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2135,
-            "y": 92,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
             "x": 2145,
             "y": 92,
             "type": "spike",
@@ -689,27 +535,6 @@
         },
         {
             "x": 2362,
-            "y": 128,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2404,
-            "y": 108,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2426,
-            "y": 128,
-            "type": "block",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2442,
             "y": 128,
             "type": "block",
             "used": false,
@@ -969,48 +794,6 @@
         },
         {
             "x": 2510,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2494,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2526,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2660,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2644,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2676,
-            "y": 76,
-            "type": "spike",
-            "used": false,
-            "turned": false
-        },
-        {
-            "x": 2510,
             "y": 12,
             "type": "block",
             "used": false,
@@ -1162,6 +945,181 @@
             "type": "spike",
             "used": false,
             "turned": false
+        },
+        {
+            "x": 848,
+            "y": 92,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 847,
+            "y": 76,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 885,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 885,
+            "y": 124,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 885,
+            "y": 108,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 920,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 920,
+            "y": 124,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 951,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 903,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 936,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1299,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1263,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1263,
+            "y": 124,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1999,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2155,
+            "y": 92,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2165,
+            "y": 92,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2054,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2054,
+            "y": 124,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2494,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2510,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2526,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2644,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2660,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2676,
+            "y": 76,
+            "type": "spike",
+            "turned": true,
+            "used": false
+        },
+        {
+            "x": 2393,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
         }
     ]
 }
