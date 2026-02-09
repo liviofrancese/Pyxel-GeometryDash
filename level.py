@@ -276,3 +276,40 @@ class Level:
         if self.in_level and pyxel.btnp(pyxel.KEY_ESCAPE):
             self.jump_status = self.jump
             self.ESC_level = True
+
+
+    def niveau_draw(self):
+        if self.in_level:
+            pyxel.cls(1)
+            #Sol blanc
+            pyxel.rect(0, self.game.cube.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
+
+            #Cube
+            if self.game.cube.cube_rotation >= 0 and self.game.cube.cube_rotation < 10:
+                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 0, 0, 16, 16, 0)
+            elif self.game.cube.cube_rotation >= 10 and self.game.cube.cube_rotation < 40:
+                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 16, 0, 16, 16, 0)
+            elif self.game.cube.cube_rotation >= 40 and self.game.cube.cube_rotation < 50:
+                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 32, 0, 16, 16, 0)
+            elif self.game.cube.cube_rotation >= 50 and self.game.cube.cube_rotation <= 80:
+                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 48, 0, 16, 16, 0)
+
+            #Obstacles
+            for obstacle in self.obstacle_liste:
+                if obstacle['x'] < self.game.screen_x:
+                    pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle['type']]['image'], self.obstacles_pyxres[obstacle['type']]['x'], self.obstacles_pyxres[obstacle['type']]['y'], self.obstacles_pyxres[obstacle['type']]['width'], self.obstacles_pyxres[obstacle['type']]['height'], 0)
+
+            if self.game_over:
+                pyxel.text(70, 70, "GAME OVER", 8)
+                pyxel.text(55, 80, "R pour recommencer", 7)
+
+            if self.finish:
+                pyxel.blt(self.game.screen_x//2-40, self.game.screen_y//2-20, 2, 0, 0, 64, 32 , 0) #Level complete
+                pyxel.blt(100, 115, 1, 48, 0, 16, 16 , 0)   #Quitter
+                pyxel.blt(170, 115, 1, 64, 0, 16, 16, 0) #Recommencer
+            pyxel.text(self.game.screen_x//2-15, 5, f"{str(self.pourcentage)}%", 8)
+
+            #ESC menu
+            if self.ESC_level:
+                pyxel.blt(5, 5, 1, 48, 0, 16, 16,0) #croix (quitter)
+                pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0) #bouton reprendre
