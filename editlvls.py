@@ -179,30 +179,31 @@ class LevelEditor:
             self.quit_editor()
 
     def editor_draw(self):
-        pyxel.cls(1)
-        
-        #Sol blanc
-        pyxel.rect(0, self.game.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
+        if self.in_editor:
+            pyxel.cls(1)
+            
+            #Sol blanc
+            pyxel.rect(0, self.game.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
 
-        self.draw_obstacles_to_choose()
-        self.draw_placement_to_choose()
-        self.draw_obstacles()
-        
-        #Save Level
-        pyxel.rect(self.game.screen_x-48, 8, 44, 10, 10)
-        pyxel.text(self.game.screen_x-45, 10, "Save Level", 0)
-        #Save As
-        pyxel.rect(self.game.screen_x-43, 20, 32, 10, 10)
-        pyxel.text(self.game.screen_x-40, 22, "Save As", 0)
-        #Camera
-        pyxel.text(self.game.screen_x/2+50, 5, f"Camera: {self.camera_x}",7)
+            self.draw_obstacles_to_choose()
+            self.draw_placement_to_choose()
+            self.draw_obstacles()
+            
+            #Save Level
+            pyxel.rect(self.game.screen_x-48, 8, 44, 10, 10)
+            pyxel.text(self.game.screen_x-45, 10, "Save Level", 0)
+            #Save As
+            pyxel.rect(self.game.screen_x-43, 20, 32, 10, 10)
+            pyxel.text(self.game.screen_x-40, 22, "Save As", 0)
+            #Camera
+            pyxel.text(self.game.screen_x/2+50, 5, f"Camera: {self.camera_x}",7)
 
-        pyxel.text(30, 5, f"Obstacle choisis: {self.choosen_obstacles}", 7)
-        pyxel.text(self.game.screen_x-65, self.game.cube_y_min+22, "Fleches: Camera", 0)
+            pyxel.text(30, 5, f"Obstacle choisis: {self.choosen_obstacles}", 7)
+            pyxel.text(self.game.screen_x-65, self.game.cube_y_min+22, "Fleches: Camera", 0)
 
-        #Obstacle on mouse
-        if self.choosen_placement == 'place':
-            pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
+            #Obstacle on mouse
+            if self.choosen_placement == 'place':
+                pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
 
-        #Bouton pour revenir au menu
-        pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
+            #Bouton pour revenir au menu
+            pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)

@@ -427,34 +427,40 @@ class Game:
             self.is_end_level()
 
     def niveau_draw(self):
-        pyxel.cls(1)
-        #Sol blanc
-        pyxel.rect(0, self.cube_y_min+16, self.screen_x, self.screen_y, 7)
+        if self.in_level:
+            pyxel.cls(1)
+            #Sol blanc
+            pyxel.rect(0, self.cube_y_min+16, self.screen_x, self.screen_y, 7)
 
-        #Cube
-        if self.cube_rotation >= 0 and self.cube_rotation < 10:
-            pyxel.blt(self.cube_x, self.cube_y, 0, 0, 0, 16, 16, 0)
-        elif self.cube_rotation >= 10 and self.cube_rotation < 40:
-            pyxel.blt(self.cube_x, self.cube_y, 0, 16, 0, 16, 16, 0)
-        elif self.cube_rotation >= 40 and self.cube_rotation < 50:
-            pyxel.blt(self.cube_x, self.cube_y, 0, 32, 0, 16, 16, 0)
-        elif self.cube_rotation >= 50 and self.cube_rotation <= 80:
-            pyxel.blt(self.cube_x, self.cube_y, 0, 48, 0, 16, 16, 0)
+            #Cube
+            if self.cube_rotation >= 0 and self.cube_rotation < 10:
+                pyxel.blt(self.cube_x, self.cube_y, 0, 0, 0, 16, 16, 0)
+            elif self.cube_rotation >= 10 and self.cube_rotation < 40:
+                pyxel.blt(self.cube_x, self.cube_y, 0, 16, 0, 16, 16, 0)
+            elif self.cube_rotation >= 40 and self.cube_rotation < 50:
+                pyxel.blt(self.cube_x, self.cube_y, 0, 32, 0, 16, 16, 0)
+            elif self.cube_rotation >= 50 and self.cube_rotation <= 80:
+                pyxel.blt(self.cube_x, self.cube_y, 0, 48, 0, 16, 16, 0)
 
-        #Obstacles
-        for obstacle in self.obstacle_liste:
-            if obstacle['x'] < self.screen_x:
-                pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle['type']]['image'], self.obstacles_pyxres[obstacle['type']]['x'], self.obstacles_pyxres[obstacle['type']]['y'], self.obstacles_pyxres[obstacle['type']]['width'], self.obstacles_pyxres[obstacle['type']]['height'], 0)
+            #Obstacles
+            for obstacle in self.obstacle_liste:
+                if obstacle['x'] < self.screen_x:
+                    pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle['type']]['image'], self.obstacles_pyxres[obstacle['type']]['x'], self.obstacles_pyxres[obstacle['type']]['y'], self.obstacles_pyxres[obstacle['type']]['width'], self.obstacles_pyxres[obstacle['type']]['height'], 0)
 
-        if self.game_over:
-            pyxel.text(70, 70, "GAME OVER", 8)
-            pyxel.text(55, 80, "R pour recommencer", 7)
+            if self.game_over:
+                pyxel.text(70, 70, "GAME OVER", 8)
+                pyxel.text(55, 80, "R pour recommencer", 7)
 
-        if self.finish_level:
-            pyxel.blt(self.screen_x//2-40, self.screen_y//2-20, 2, 0, 0, 64, 32 , 0) #Level complete
-            pyxel.blt(100, 115, 1, 48, 0, 16, 16 , 0)   #Quitter
-            pyxel.blt(170, 115, 1, 64, 0, 16, 16, 0) #Recommencer
-        pyxel.text(self.screen_x//2-15, 5, f"{str(self.level_pourcentage)}%", 8)
+            if self.finish_level:
+                pyxel.blt(self.screen_x//2-40, self.screen_y//2-20, 2, 0, 0, 64, 32 , 0) #Level complete
+                pyxel.blt(100, 115, 1, 48, 0, 16, 16 , 0)   #Quitter
+                pyxel.blt(170, 115, 1, 64, 0, 16, 16, 0) #Recommencer
+            pyxel.text(self.screen_x//2-15, 5, f"{str(self.level_pourcentage)}%", 8)
+
+            #ESC menu
+            if self.ESC_level:
+                pyxel.blt(5, 5, 1, 48, 0, 16, 16,0) #croix (quitter)
+                pyxel.blt(self.screen_x/2-16, self.screen_y/2-16, 1, 0, 0, 32, 32,0) #bouton reprendre
 
 
     #Gamew
@@ -465,7 +471,7 @@ class Game:
         #Lvl editor
         self.level_editor.editor_update()
 
-        #noclip
+        #Cheats
         self.cheats.cheats_update()
 
         #Niveau en cours
@@ -474,22 +480,18 @@ class Game:
 
 
     def draw(self):
-        if self.menu.in_menu: #menu
-            self.menu.menu_draw()
+        #menu
+        self.menu.menu_draw()
 
-        if self.level_editor.in_editor:
-            self.level_editor.editor_draw()
+        #Lvl editor
+        self.level_editor.editor_draw()
 
-        if self.in_level: #dans le niveau
-            self.niveau_draw() #chaque level dessine la même chose
+        self.niveau_draw() #chaque level dessine la même chose
 
-        #Afficher noclip
+        #Cheats
         self.cheats.cheats_draw()
 
-        #ESC menu
-        if self.ESC_level:
-            pyxel.blt(5, 5, 1, 48, 0, 16, 16,0) #croix (quitter)
-            pyxel.blt(self.screen_x/2-16, self.screen_y/2-16, 1, 0, 0, 32, 32,0) #bouton reprendre
+        
 
 
 

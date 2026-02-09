@@ -62,31 +62,32 @@ class Menu:
 
 
     def menu_draw(self):
-        pyxel.cls(1)
-        if self.game_menu == 1: #menu principale
-            #Quitter
-            pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
+        if self.in_menu:
+            pyxel.cls(1)
+            if self.game_menu == 1: #menu principale
+                #Quitter
+                pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
-            #Bouton pour game_menu = 2
-            pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0)
-
-
-        elif self.game_menu == 2: #Sélection niveaux
-            #Retour game_menu (croix)
-            pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
+                #Bouton pour game_menu = 2
+                pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0)
 
 
-            #Edit lvls
-            pyxel.blt(self.game.screen_x/2-90, self.game.screen_y/2-5, 1, 88, 0, 16, 16,0)
+            elif self.game_menu == 2: #Sélection niveaux
+                #Retour game_menu (croix)
+                pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
 
-            #Choix niveau
-            pyxel.blt(10, self.game.screen_y/2, 1, 32, 16, 16, 16,0) #gauche
-            pyxel.blt(self.game.screen_x-10-16, self.game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
-            
-            #Affichage des boutons niveaux
-            if self.chosen_level == 1:
-                pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 1*32, 128, 32, 0)
+                #Edit lvls
+                pyxel.blt(self.game.screen_x/2-90, self.game.screen_y/2-5, 1, 88, 0, 16, 16,0)
 
-            if self.chosen_level == 2:
-                pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 2*32, 128, 32, 0)
+
+                #Choix niveau
+                pyxel.blt(10, self.game.screen_y/2, 1, 32, 16, 16, 16,0) #gauche
+                pyxel.blt(self.game.screen_x-10-16, self.game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
+                
+                #Affichage des boutons niveaux
+                if self.chosen_level == 1:
+                    pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 1*32, 128, 32, 0)
+
+                if self.chosen_level == 2:
+                    pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 2*32, 128, 32, 0)
