@@ -3,7 +3,9 @@ import json
 import os
 from editlvls import LevelEditor
 from menu import Menu
-
+from cube import Cube
+from cheats import Cheats
+from level import Level
 
 
 class Game:
@@ -17,6 +19,9 @@ class Game:
         #Class
         self.level_editor = LevelEditor(self)
         self.menu = Menu(self)
+        self.cube = Cube(self)
+        self.cheats = Cheats(self)
+        self.level = Level(self)
 
         self.folders = {
             "default": os.getcwd(),
@@ -405,26 +410,31 @@ class Game:
 
     #level update et draw
     def niveau_update(self):
-        #Level initialization
-        self.level_init()
+        if self.in_level:
+            #Level initialization
+            self.level_init()
 
-        #Get song position
-        self.get_song_pos()
+            #Get song position
+            self.get_song_pos()
 
-        #Gestion d'obstacles
-        self.obstacles_gestion()
+            #Gestion d'obstacles
+            self.obstacles_gestion()
 
-        #Obstacles:
-        self.deplacement_obstacles()
+            #Obstacles:
+            self.deplacement_obstacles()
 
-        #Pourcentage du niveau:
-        self.level_pourc()
+            #Pourcentage du niveau:
+            self.level_pourc()
 
-        #Gestion du cube
-        self.cube_jump_rot()
+            #Gestion du cube
+            self.cube_jump_rot()
 
-        #endlevel
-        self.is_end_level()
+            #ESC
+            self.ESC()
+
+            #endlevel
+            self.is_end_level()
+
     def niveau_draw(self):
         pyxel.cls(1)
         #Sol blanc
@@ -459,22 +469,18 @@ class Game:
     #Gamew
     def update(self):
         #Menu
-        if self.menu.in_menu:
-            self.menu.menu_update()
-            #arrêter toutes les musics
+        self.menu.menu_update()
 
-        if self.level_editor.in_editor:
-            self.level_editor.editor_update()
+        #Lvl editor
+        self.level_editor.editor_update()
 
         #noclip
         self.noclip = self.noclip_change()
 
         #Niveau en cours
-        if self.in_level:
-            self.niveau_update()
+        
+        self.niveau_update()
 
-        #ESC dans le niveau
-        self.ESC()
 
     def draw(self):
         if self.menu.in_menu: #menu

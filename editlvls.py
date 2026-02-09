@@ -164,18 +164,19 @@ class LevelEditor:
 
 
     def editor_update(self):
-        self.editor_init()
-        self.no_place_obstacle += 1
-        self.choose_placement()
-        self.choose_obstacle()
-        self.saving()
-        self.mouse_pos()
-        self.move_camera()
-        self.place_obstacle()
-        self.remove_obstacle()
+        if self.in_editor:
+            self.editor_init()
+            self.no_place_obstacle += 1
+            self.choose_placement()
+            self.choose_obstacle()
+            self.saving()
+            self.mouse_pos()
+            self.move_camera()
+            self.place_obstacle()
+            self.remove_obstacle()
 
-        #Quit editor
-        self.quit_editor()
+            #Quit editor
+            self.quit_editor()
 
     def editor_draw(self):
         pyxel.cls(1)
