@@ -4,12 +4,18 @@ class Menu:
     def __init__(self, game):
         self.game = game
 
+        self.in_menu = True
+        self.menu_song_var = False
+        self.game_menu = 1
+        self.chosen_level  = 1
+        self.chosen_level_max = 0
+
     def menu_update(self):
-        if not self.game.menu_song_var:
+        if not self.menu_song_var:
             pyxel.playm(0, 0, True) #menu song
-            self.game.menu_song_var = True
+            self.menu_song_var = True
         pyxel.mouse(True)
-        if self.game.game_menu == 1: #menu principale
+        if self.game_menu == 1: #menu principale
             #Quitter
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 5+16 and pyxel.mouse_x > 5 and pyxel.mouse_y < 5+16 and pyxel.mouse_y > 5 or pyxel.btnp(pyxel.KEY_ESCAPE):
                 pyxel.quit()
@@ -17,31 +23,31 @@ class Menu:
 
             #Bouton pour game_menu = 2
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2+16 and pyxel.mouse_x > self.game.screen_x/2-16 and pyxel.mouse_y < self.game.screen_y/2+16 and pyxel.mouse_y > self.game.screen_y/2-16:
-                self.game.game_menu = 2
-                self.game.chosen_level = 1
+                self.game_menu = 2
+                self.chosen_level = 1
         
 
-        elif self.game.game_menu == 2:
+        elif self.game_menu == 2:
             #Retour game_menu (croix)
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 5+16 and pyxel.mouse_x > 5 and pyxel.mouse_y < 5+16 and pyxel.mouse_y > 5 or pyxel.btnp(pyxel.KEY_ESCAPE):
-                self.game.game_menu = 1
+                self.game_menu = 1
 
             #Choix niveau
             elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 10+16 and pyxel.mouse_x > 10 and pyxel.mouse_y < self.game.screen_y/2+16 and pyxel.mouse_y > self.game.screen_y/2 or pyxel.btnp(pyxel.KEY_LEFT): #gauche
-                if self.game.chosen_level == 1:
-                    self.game.chosen_level = self.game.chosen_level_max
+                if self.chosen_level == 1:
+                    self.chosen_level = self.chosen_level_max
                 else:
-                    self.game.chosen_level -= 1
+                    self.chosen_level -= 1
             elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-10 and pyxel.mouse_x > self.game.screen_x-10-16 and pyxel.mouse_y < self.game.screen_y/2+16 and pyxel.mouse_y > self.game.screen_y/2 or pyxel.btnp(pyxel.KEY_RIGHT): #droit
-                if self.game.chosen_level == self.game.chosen_level_max:
-                    self.game.chosen_level = 1
+                if self.chosen_level == self.chosen_level_max:
+                    self.chosen_level = 1
                 else:
-                    self.game.chosen_level += 1
+                    self.chosen_level += 1
 
             #Bouton cliqué ? JOUER
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-64+128 and pyxel.mouse_x > self.game.screen_x/2-64 and pyxel.mouse_y < self.game.screen_y/2-16+32 and pyxel.mouse_y > self.game.screen_y/2-16 or pyxel.btnp(pyxel.KEY_RETURN):
-                self.game.current_level = f'lvl{self.game.chosen_level}'
-                self.game.in_menu = False
+                self.game.current_level = f'lvl{self.chosen_level}'
+                self.in_menu = False
                 self.game.in_level = True
 
             #Bouton edit lvls
@@ -51,12 +57,12 @@ class Menu:
                 self.game.level_editor.in_editor = True
                 self.game.current_level = f'lvl{self.game.chosen_level}'
                 self.game.level_editor.choosing_level = self.game.chosen_level
-                self.game.in_menu = False
+                self.in_menu = False
 
 
     def menu_draw(self):
         pyxel.cls(1)
-        if self.game.game_menu == 1: #menu principale
+        if self.game_menu == 1: #menu principale
             #Quitter
             pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
@@ -64,7 +70,7 @@ class Menu:
             pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0)
 
 
-        elif self.game.game_menu == 2: #Sélection niveaux
+        elif self.game_menu == 2: #Sélection niveaux
             #Retour game_menu (croix)
             pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
@@ -78,8 +84,8 @@ class Menu:
             pyxel.blt(self.game.screen_x-10-16, self.game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
             
             #Affichage des boutons niveaux
-            if self.game.chosen_level == 1:
+            if self.chosen_level == 1:
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 1*32, 128, 32, 0)
 
-            if self.game.chosen_level == 2:
+            if self.chosen_level == 2:
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, 2*32, 128, 32, 0)

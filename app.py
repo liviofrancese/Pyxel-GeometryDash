@@ -56,13 +56,9 @@ class Game:
 
 
         #Game
-        self.in_menu = True
-        self.game_menu = 1
         self.in_level = False
         self.ESC_level = False
         self.current_level = None
-        self.chosen_level = 1
-        self.chosen_level_max = 0
 
 
         #Obstacles
@@ -151,7 +147,7 @@ class Game:
         #json path
         self.levels_json()
         #Songs
-        self.menu_song_var = False
+        
         self.death_sound_var = False
 
 
@@ -175,11 +171,11 @@ class Game:
                 #Créer une variable avec l'emplacement du fichier.json
                 var_name = filename.replace(".json", "")
                 self.levels[var_name] = f"{levels_folder}\\{filename}"
-                self.chosen_level_max += 1
+                self.menu.chosen_level_max += 1
 
     def default_var(self):
         #music
-        self.menu_song_var = False
+        self.menu.menu_song_var = False
         self.death_sound_var = False
         self.music_position = None
         self.sound = 0
@@ -208,7 +204,7 @@ class Game:
             self.sec += seconds
         if self.current_level == 'lvl1':
             pyxel.playm(1, sec=self.sec)
-        if self.current_level == 'level2':
+        if self.current_level == 'lvl2':
             pyxel.playm(2, sec=self.sec)
     def play_song(self):
         if self.current_level == 'lvl1':
@@ -367,9 +363,8 @@ class Game:
         self.default_var()
         #game
         self.in_level = False
-        self.in_menu = True
-        self.menu_song_var = False
-        self.game_menu = 2
+        self.menu.in_menu = True
+        self.menu.game_menu = 2
     def ESC(self):
         if self.ESC_level:
             pyxel.mouse(True)
@@ -464,7 +459,7 @@ class Game:
     #Gamew
     def update(self):
         #Menu
-        if self.in_menu:
+        if self.menu.in_menu:
             self.menu.menu_update()
             #arrêter toutes les musics
 
@@ -482,7 +477,7 @@ class Game:
         self.ESC()
 
     def draw(self):
-        if self.in_menu: #menu
+        if self.menu.in_menu: #menu
             self.menu.menu_draw()
 
         if self.level_editor.in_editor:
