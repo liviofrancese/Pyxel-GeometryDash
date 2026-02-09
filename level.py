@@ -162,9 +162,9 @@ class Level:
                     obstacle['used']=True
 
             #Collisions
-            if self.collision(obstacle) and not obstacle['type']=='orb' and self.cheats.noclip==False:
+            if self.collision(obstacle) and not obstacle['type']=='orb' and self.game.cheats.noclip==False:
                 self.game_over = True
-                self.death_sound()
+                self.game.music.death_sound()
                 self.stop()
                 if pyxel.btnp(pyxel.KEY_R):
                     self.initialisation = False
@@ -313,3 +313,29 @@ class Level:
             if self.ESC_level:
                 pyxel.blt(5, 5, 1, 48, 0, 16, 16,0) #croix (quitter)
                 pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0) #bouton reprendre
+
+    def niveau_update(self):
+        if self.in_level:
+            #Level initialization
+            self.level_init()
+
+            #Get song position
+            self.game.music.get_song_pos()
+
+            #Gestion d'obstacles
+            self.obstacles_gestion()
+
+            #Obstacles:
+            self.deplacement_obstacles()
+
+            #Pourcentage du niveau:
+            self.level_pourc()
+
+            #Gestion du cube
+            self.cube_jump_rot()
+
+            #ESC
+            self.ESC()
+
+            #endlevel
+            self.is_end_level()

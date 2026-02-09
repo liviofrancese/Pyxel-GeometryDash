@@ -83,31 +83,7 @@ class Game:
 
 
     #level update et draw
-    def niveau_update(self):
-        if self.level.in_level:
-            #Level initialization
-            self.level.level_init()
 
-            #Get song position
-            self.music.get_song_pos()
-
-            #Gestion d'obstacles
-            self.level.obstacles_gestion()
-
-            #Obstacles:
-            self.level.deplacement_obstacles()
-
-            #Pourcentage du niveau:
-            self.level.level_pourc()
-
-            #Gestion du cube
-            self.level.cube_jump_rot()
-
-            #ESC
-            self.level.ESC()
-
-            #endlevel
-            self.level.is_end_level()
 
 
 
@@ -124,8 +100,7 @@ class Game:
         self.cheats.cheats_update()
 
         #Niveau en cours
-        
-        self.niveau_update()
+        self.level.niveau_update()
 
 
     def draw(self):
