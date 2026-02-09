@@ -56,8 +56,7 @@ class Game:
         self.game_over = False
 
 
-        #Cheats
-        self.noclip = False
+
 
 
         #Game
@@ -282,7 +281,7 @@ class Game:
                     obstacle['used']=True
 
             #Collisions
-            if self.collision(obstacle) and not obstacle['type']=='orb' and self.noclip==False:
+            if self.collision(obstacle) and not obstacle['type']=='orb' and self.cheats.noclip==False:
                 self.game_over = True
                 self.death_sound()
                 self.stop()
@@ -398,14 +397,6 @@ class Game:
             self.ESC_level = True
 
 
-#Cheats
-    def noclip_change(self):
-        if pyxel.btnp(pyxel.KEY_N):
-            if self.noclip:
-                return False
-            return True
-        else:
-            return self.noclip
 
 
     #level update et draw
@@ -475,7 +466,7 @@ class Game:
         self.level_editor.editor_update()
 
         #noclip
-        self.noclip = self.noclip_change()
+        self.cheats.cheats_update()
 
         #Niveau en cours
         
@@ -493,8 +484,7 @@ class Game:
             self.niveau_draw() #chaque level dessine la même chose
 
         #Afficher noclip
-        if self.noclip:
-            pyxel.text(self.screen_x-30,5,"NOCLIP",8)
+        self.cheats.cheats_draw()
 
         #ESC menu
         if self.ESC_level:
