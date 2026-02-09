@@ -1,6 +1,7 @@
 import pyxel
-import json
 import os
+
+#Class
 from editlvls import LevelEditor
 from menu import Menu
 from cube import Cube
@@ -30,8 +31,6 @@ class Game:
             "levels": f"{os.getcwd()}\\levels",
             "editlevels": f"{os.getcwd()}\\editlevels"
         }
-
-
         self.levels_json()
 
 
@@ -42,7 +41,7 @@ class Game:
 
     def levels_json(self):
         #Fichiers où se trouvent les niveaux
-        levels_folder = f"{os.getcwd()}\\levels"
+        levels_folder = self.folders["levels"]
         self.levels = {}
         for filename in os.listdir(levels_folder):
             if filename.endswith(".json") and filename.startswith("lvl"):
@@ -79,19 +78,13 @@ class Game:
 
 
 
-
-
-
-    #level update et draw
-
-
-
-
-
-    #Gamew
+    #Game
     def update(self):
         #Menu
         self.menu.menu_update()
+
+        #Niveau en cours
+        self.level.niveau_update()
 
         #Lvl editor
         self.level_editor.editor_update()
@@ -99,24 +92,23 @@ class Game:
         #Cheats
         self.cheats.cheats_update()
 
-        #Niveau en cours
-        self.level.niveau_update()
+        
 
 
     def draw(self):
-        #menu
+        #Menu
         self.menu.menu_draw()
 
         #Lvl editor
         self.level_editor.editor_draw()
 
-        self.level.niveau_draw() #chaque level dessine la même chose
+        #Niveau
+        self.level.niveau_draw()
 
         #Cheats
         self.cheats.cheats_draw()
 
         
-
 
 
 Game()
