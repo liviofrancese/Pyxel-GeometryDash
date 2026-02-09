@@ -47,7 +47,7 @@ class LevelEditor:
     def quit_editor(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 5+16 and pyxel.mouse_x > 5 and pyxel.mouse_y < 5+16 and pyxel.mouse_y > 5 or pyxel.btnp(pyxel.KEY_ESCAPE):
             self.in_editor = False
-            self.game.menu = True
+            self.game.in_menu = True
             self.no_place_obstacle = 0
             self.initialisation = False
             self.camera_x = 0

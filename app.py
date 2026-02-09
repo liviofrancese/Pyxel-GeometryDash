@@ -56,7 +56,7 @@ class Game:
 
 
         #Game
-        self.menu = True
+        self.in_menu = True
         self.game_menu = 1
         self.in_level = False
         self.ESC_level = False
@@ -165,7 +165,7 @@ class Game:
 
 
 
-    
+
     def levels_json(self):
         #Fichiers où se trouvent les niveaux
         levels_folder = f"{os.getcwd()}\\levels"
@@ -176,7 +176,7 @@ class Game:
                 var_name = filename.replace(".json", "")
                 self.levels[var_name] = f"{levels_folder}\\{filename}"
                 self.chosen_level_max += 1
-                
+
     def default_var(self):
         #music
         self.menu_song_var = False
@@ -367,7 +367,7 @@ class Game:
         self.default_var()
         #game
         self.in_level = False
-        self.menu = True
+        self.in_menu = True
         self.menu_song_var = False
         self.game_menu = 2
     def ESC(self):
@@ -464,7 +464,7 @@ class Game:
     #Gamew
     def update(self):
         #Menu
-        if self.menu:
+        if self.in_menu:
             self.menu.menu_update()
             #arrêter toutes les musics
 
@@ -482,7 +482,7 @@ class Game:
         self.ESC()
 
     def draw(self):
-        if self.menu: #menu
+        if self.in_menu: #menu
             self.menu.menu_draw()
 
         if self.level_editor.in_editor:
