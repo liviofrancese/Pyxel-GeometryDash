@@ -1,11 +1,6 @@
 {
-    "level_length": 2710,
+    "level_length": 3044,
     "obstacles": [
-        {
-            "x": 200,
-            "y": 140,
-            "type": "spike"
-        },
         {
             "x": 280,
             "y": 140,
@@ -800,6 +795,230 @@
             "x": 2393,
             "y": 140,
             "type": "block"
+        },
+        {
+            "x": 1280,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1465,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1879,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1778,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 1680,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2196,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2587,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 828,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 792,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 846,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 717,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 733,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 660,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 676,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2212,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2228,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2244,
+            "y": 140,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2731,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2744,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2757,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2771,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2785,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2876,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2876,
+            "y": 125,
+            "type": "spike",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2876,
+            "y": 68,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2945,
+            "y": 140,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2945,
+            "y": 68,
+            "type": "block",
+            "turned": false,
+            "used": false
+        },
+        {
+            "x": 2945,
+            "y": 125,
+            "type": "spike"
+        },
+        {
+            "x": 2876,
+            "y": 83,
+            "type": "turned spike"
+        },
+        {
+            "x": 2945,
+            "y": 83,
+            "type": "turned spike"
+        },
+        {
+            "x": 3019,
+            "y": 140,
+            "type": "block"
+        },
+        {
+            "x": 3019,
+            "y": 68,
+            "type": "block"
+        },
+        {
+            "x": 3019,
+            "y": 82,
+            "type": "turned spike"
+        },
+        {
+            "x": 3019,
+            "y": 126,
+            "type": "spike"
         }
     ]
 }
