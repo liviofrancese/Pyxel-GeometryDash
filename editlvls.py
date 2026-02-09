@@ -57,8 +57,8 @@ class LevelEditor:
     def mouse_pos(self):
         self.mouse_x = pyxel.mouse_x
         self.mouse_y = pyxel.mouse_y
-        if self.mouse_y >= self.game.cube_y_min+8:
-            self.mouse_y = self.game.cube_y_min+8
+        if self.mouse_y >= self.game.cube.cube_y_min+8:
+            self.mouse_y = self.game.cube.cube_y_min+8
     
     def choose_placement(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['place']['x']+16 and pyxel.mouse_x > self.obstacles_pos['place']['x'] and pyxel.mouse_y < self.obstacles_pos['place']['y']+16 and pyxel.mouse_y > self.obstacles_pos['place']['y']:
@@ -88,14 +88,14 @@ class LevelEditor:
 
     def editor_init(self):
         if not self.initialisation:
-            self.game.reset_obstacles()
-            self.obstacles_temp = self.game.obstacle_liste
-            self.end_of_level = self.game.end_level
+            self.game.level.reset_obstacles()
+            self.obstacles_temp = self.game.level.obstacle_liste
+            self.end_of_level = self.game.level.end
             self.initialisation = True
     def place_obstacle(self):
         if self.no_place_obstacle < 2:
             return
-        if self.choosen_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
+        if self.choosen_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
             self.obstacles_temp.append({"x": self.mouse_x-8+self.camera_x, "y": self.mouse_y-8, "type": self.choosen_obstacles})
 
     def remove_obstacle(self):
@@ -115,8 +115,8 @@ class LevelEditor:
 
     def saving(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-4 and pyxel.mouse_x > self.game.screen_x-48 and pyxel.mouse_y < 8+10 and pyxel.mouse_y > 10:
-            self.write_json(self.game.levels[self.game.current_level], self.obstacles_temp)
-            self.lvl_json_path = self.game.levels[self.game.current_level]
+            self.write_json(self.game.levels[self.game.level.current_level], self.obstacles_temp)
+            self.lvl_json_path = self.game.levels[self.game.level.current_level]
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-11 and pyxel.mouse_x > self.game.screen_x-43 and pyxel.mouse_y < 20+10 and pyxel.mouse_y > 20:
             while os.path.exists(self.custum_level):
                 self.custum_level = f"levels\\custum_level{self.new_json_file}.json"
@@ -135,12 +135,12 @@ class LevelEditor:
     def draw_obstacles(self):
         for obstacle in self.obstacles_temp:
             if obstacle['x']-self.camera_x < self.game.screen_x:
-                pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.obstacles_pyxres[obstacle['type']]['image'], self.game.obstacles_pyxres[obstacle['type']]['x'], self.game.obstacles_pyxres[obstacle['type']]['y'], self.game.obstacles_pyxres[obstacle['type']]['width'], self.game.obstacles_pyxres[obstacle['type']]['height'], 0)
+                pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.level.obstacles_pyxres[obstacle['type']]['image'], self.game.level.obstacles_pyxres[obstacle['type']]['x'], self.game.level.obstacles_pyxres[obstacle['type']]['y'], self.game.level.obstacles_pyxres[obstacle['type']]['width'], self.game.level.obstacles_pyxres[obstacle['type']]['height'], 0)
 
         #Finish line
         self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+25
         if self.end_of_level-self.camera_x < self.game.screen_x:
-            pyxel.line(self.end_of_level-self.camera_x, 0, self.end_of_level-self.camera_x, self.game.y_min+16, 4)
+            pyxel.line(self.end_of_level-self.camera_x, 0, self.end_of_level-self.camera_x, self.game.cube.cube_y_min+16, 4)
     
     def draw_placement_to_choose(self):
         pyxel.blt(self.obstacles_pos['place']['x'], self.obstacles_pos['place']['y'], 1, 104, 0, 16, 16, 0)
@@ -149,15 +149,15 @@ class LevelEditor:
     
     def draw_obstacles_to_choose(self):
         #Spike
-        pyxel.blt(self.obstacles_pos['spike']['x'], self.obstacles_pos['spike']['y'], self.game.obstacles_pyxres['spike']['image'], self.game.obstacles_pyxres['spike']['x'], self.game.obstacles_pyxres['spike']['y'], self.game.obstacles_pyxres['spike']['width'], self.game.obstacles_pyxres['spike']['height'], 0)
+        pyxel.blt(self.obstacles_pos['spike']['x'], self.obstacles_pos['spike']['y'], self.game.level.obstacles_pyxres['spike']['image'], self.game.level.obstacles_pyxres['spike']['x'], self.game.level.obstacles_pyxres['spike']['y'], self.game.level.obstacles_pyxres['spike']['width'], self.game.level.obstacles_pyxres['spike']['height'], 0)
         #Turned spike
-        pyxel.blt(self.obstacles_pos['turned spike']['x'], self.obstacles_pos['turned spike']['y'], self.game.obstacles_pyxres['turned spike']['image'], self.game.obstacles_pyxres['turned spike']['x'], self.game.obstacles_pyxres['turned spike']['y'], self.game.obstacles_pyxres['turned spike']['width'], self.game.obstacles_pyxres['turned spike']['height'], 0)
+        pyxel.blt(self.obstacles_pos['turned spike']['x'], self.obstacles_pos['turned spike']['y'], self.game.level.obstacles_pyxres['turned spike']['image'], self.game.level.obstacles_pyxres['turned spike']['x'], self.game.level.obstacles_pyxres['turned spike']['y'], self.game.level.obstacles_pyxres['turned spike']['width'], self.game.level.obstacles_pyxres['turned spike']['height'], 0)
         #Block
-        pyxel.blt(self.obstacles_pos['block']['x'], self.obstacles_pos['block']['y'], self.game.obstacles_pyxres['block']['image'], self.game.obstacles_pyxres['block']['x'], self.game.obstacles_pyxres['block']['y'], self.game.obstacles_pyxres['block']['width'], self.game.obstacles_pyxres['block']['height'], 0)
+        pyxel.blt(self.obstacles_pos['block']['x'], self.obstacles_pos['block']['y'], self.game.level.obstacles_pyxres['block']['image'], self.game.level.obstacles_pyxres['block']['x'], self.game.level.obstacles_pyxres['block']['y'], self.game.level.obstacles_pyxres['block']['width'], self.game.level.obstacles_pyxres['block']['height'], 0)
         #Mur
-        pyxel.blt(self.obstacles_pos['mur']['x'], self.obstacles_pos['mur']['y'], self.game.obstacles_pyxres['mur']['image'], self.game.obstacles_pyxres['mur']['x'], self.game.obstacles_pyxres['mur']['y'], self.game.obstacles_pyxres['mur']['width'], self.game.obstacles_pyxres['mur']['height'], 0)
+        pyxel.blt(self.obstacles_pos['mur']['x'], self.obstacles_pos['mur']['y'], self.game.level.obstacles_pyxres['mur']['image'], self.game.level.obstacles_pyxres['mur']['x'], self.game.level.obstacles_pyxres['mur']['y'], self.game.level.obstacles_pyxres['mur']['width'], self.game.level.obstacles_pyxres['mur']['height'], 0)
         #Orb
-        pyxel.blt(self.obstacles_pos['orb']['x'], self.obstacles_pos['orb']['y'], self.game.obstacles_pyxres['orb']['image'], self.game.obstacles_pyxres['orb']['x'], self.game.obstacles_pyxres['orb']['y'], self.game.obstacles_pyxres['orb']['width'], self.game.obstacles_pyxres['orb']['height'], 0)
+        pyxel.blt(self.obstacles_pos['orb']['x'], self.obstacles_pos['orb']['y'], self.game.level.obstacles_pyxres['orb']['image'], self.game.level.obstacles_pyxres['orb']['x'], self.game.level.obstacles_pyxres['orb']['y'], self.game.level.obstacles_pyxres['orb']['width'], self.game.level.obstacles_pyxres['orb']['height'], 0)
         #Choosen
         if self.choosen_placement == 'place' :
             pyxel.rectb(self.obstacles_pos[self.choosen_obstacles]['x']-2, self.obstacles_pos[self.choosen_obstacles]['y']-2, 20, 20, 10)    
@@ -183,7 +183,7 @@ class LevelEditor:
             pyxel.cls(1)
             
             #Sol blanc
-            pyxel.rect(0, self.game.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
+            pyxel.rect(0, self.game.cube.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
 
             self.draw_obstacles_to_choose()
             self.draw_placement_to_choose()
@@ -199,11 +199,11 @@ class LevelEditor:
             pyxel.text(self.game.screen_x/2+50, 5, f"Camera: {self.camera_x}",7)
 
             pyxel.text(30, 5, f"Obstacle choisis: {self.choosen_obstacles}", 7)
-            pyxel.text(self.game.screen_x-65, self.game.cube_y_min+22, "Fleches: Camera", 0)
+            pyxel.text(self.game.screen_x-65, self.game.cube.cube_y_min+22, "Fleches: Camera", 0)
 
             #Obstacle on mouse
             if self.choosen_placement == 'place':
-                pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
+                pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.level.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
 
             #Bouton pour revenir au menu
             pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)

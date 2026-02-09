@@ -47,17 +47,17 @@ class Menu:
 
                 #Bouton cliqué ? JOUER
                 if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-64+128 and pyxel.mouse_x > self.game.screen_x/2-64 and pyxel.mouse_y < self.game.screen_y/2-16+32 and pyxel.mouse_y > self.game.screen_y/2-16 or pyxel.btnp(pyxel.KEY_RETURN):
-                    self.game.current_level = f'lvl{self.chosen_level}'
+                    self.game.level.current_level = f'lvl{self.chosen_level}'
                     self.in_menu = False
-                    self.game.in_level = True
+                    self.game.level.in_level = True
 
                 #Bouton edit lvls
                 if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-90+16 and pyxel.mouse_x > self.game.screen_x/2-90 and pyxel.mouse_y < self.game.screen_y/2-5+16 and pyxel.mouse_y > self.game.screen_y/2-5:
                     #SAVOIR QUELLE NIVEAU A EDITER
                     pyxel.stop()
                     self.game.level_editor.in_editor = True
-                    self.game.current_level = f'lvl{self.game.chosen_level}'
-                    self.game.level_editor.choosing_level = self.game.chosen_level
+                    self.game.level.current_level = f'lvl{self.chosen_level}'
+                    self.game.level_editor.choosing_level = self.chosen_level
                     self.in_menu = False
 
 
