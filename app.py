@@ -1,8 +1,8 @@
 import pyxel
 import json
 import os
-from menu import *
 from editlvls import LevelEditor
+from menu import Menu
 
 
 
@@ -14,7 +14,9 @@ class Game:
         pyxel.mouse(True)
         pyxel.load("geometrydash.pyxres")
 
+        #Class
         self.level_editor = LevelEditor(self)
+        self.menu = Menu(self)
 
         self.folders = {
             "default": os.getcwd(),
@@ -463,7 +465,7 @@ class Game:
     def update(self):
         #Menu
         if self.menu:
-            menu_update(self)
+            self.menu.menu_update()
             #arrêter toutes les musics
 
         if self.level_editor.in_editor:
@@ -481,7 +483,7 @@ class Game:
 
     def draw(self):
         if self.menu: #menu
-            menu_draw(self)
+            self.menu.menu_draw()
 
         if self.level_editor.in_editor:
             self.level_editor.editor_draw()

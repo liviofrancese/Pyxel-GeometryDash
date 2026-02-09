@@ -5,8 +5,8 @@ import os
 class LevelEditor:
     def __init__(self, game):
         pyxel.mouse(True)
-        #init all variables
         self.game = game
+        #init all variables
         self.in_editor = False
         self.new_json_file = 1
         self.custum_level = "levels\\custum_level.json"
