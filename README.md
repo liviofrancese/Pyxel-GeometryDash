@@ -7,4 +7,8 @@ Requirements:
 - restart: R
 - quit level: ESC
 
+### Keybinds:
+- Cheats:
+    - N : Noclip
+
 THIS IS NOT A GAME MADE BY ROPTOP
