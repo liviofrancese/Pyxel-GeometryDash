@@ -219,5 +219,6 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - Continué les niveaux
 - organisation:
     - class Menu , Cube, Level, Music, Cheats
+- automatimasion de l'affichage des boutons de niveau dans le menu
 ### 📝 À faire:
 - class Cube: fonctions peuvent être ajouté
