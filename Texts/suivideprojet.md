@@ -217,7 +217,7 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ### ✅ Ajouts / Changements:
 - Fix bugs
 - Continué les niveaux
-- class Menu
-- debut creation d'autres class (pour cube, level, cheats, etc...)
+- organisation:
+    - class Menu , Cube, Level, Music, Cheats
 ### 📝 À faire:
-- Finir les class
+- class Cube: fonctions peuvent être ajouté

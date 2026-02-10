@@ -189,37 +189,8 @@ class Level:
         if (self.collisions['cube']['cube_droit'] > obs_gauche and self.collisions['cube']['cube_gauche'] < obs_droit and self.collisions['cube']['cube_bas'] > obs_haut and self.collisions['cube']['cube_haut'] < obs_bas):
             return True
         return False
-    def cube_jump_rot(self):
-        #Saut du cube
-        if pyxel.btn(pyxel.KEY_SPACE) and self.jump==False:
-            self.jumping()
-        self.game.cube.cube_y += self.velocity_y
-        self.velocity_y += self.gravity
-        self.is_going_down()
-        self.end -= self.speed
 
-        if self.game.cube.cube_rot:
-            self.game.cube.cube_rotation += 4
-            if self.game.cube.cube_rotation >= 80:
-                self.game.cube.cube_rotation = 0
-        if self.jump==False:
-            self.game.cube.cube_rotation = 0
-            self.game.cube.cube_rot = False
 
-        #Cube va au minimum au sol
-        if self.game.cube.cube_y >= self.game.cube.cube_y_min:
-            self.game.cube.cube_y = self.game.cube.cube_y_min
-            self.jump = False
-            self.velocity_y = 0
-    def is_going_down(self):
-        if not self.game.cube.going_down:
-            self.game.cube.cube_y_before = self.game.cube.cube_y
-            self.game.cube.going_down = True
-        elif self.game.cube.going_down:
-            self.game.cube.cube_y_now = self.game.cube.cube_y
-            self.game.cube.going_down = False
-            if self.game.cube.cube_y_before < self.game.cube.cube_y_now:
-                self.jump = True
     def level_pourc(self):
         self.game.cube.cube_x_pourc += self.speed
         self.pourcentage = int(self.game.cube.cube_x_pourc/(self.end_pourc-self.game.cube.cube_x)*10000)
@@ -278,6 +249,34 @@ class Level:
             self.ESC_level = True
 
 
+
+
+    def niveau_update(self):
+        if self.in_level:
+            #Level initialization
+            self.level_init()
+
+            #Get song position
+            self.game.music.get_song_pos()
+
+            #Gestion d'obstacles
+            self.obstacles_gestion()
+
+            #Obstacles:
+            self.deplacement_obstacles()
+
+            #Pourcentage du niveau:
+            self.level_pourc()
+
+            #Gestion du cube
+            self.game.cube.jump_rotation()
+
+            #ESC
+            self.ESC()
+
+            #endlevel
+            self.is_end_level()
+
     def niveau_draw(self):
         if self.in_level:
             pyxel.cls(1)
@@ -285,14 +284,7 @@ class Level:
             pyxel.rect(0, self.game.cube.cube_y_min+16, self.game.screen_x, self.game.screen_y, 7)
 
             #Cube
-            if self.game.cube.cube_rotation >= 0 and self.game.cube.cube_rotation < 10:
-                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 0, 0, 16, 16, 0)
-            elif self.game.cube.cube_rotation >= 10 and self.game.cube.cube_rotation < 40:
-                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 16, 0, 16, 16, 0)
-            elif self.game.cube.cube_rotation >= 40 and self.game.cube.cube_rotation < 50:
-                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 32, 0, 16, 16, 0)
-            elif self.game.cube.cube_rotation >= 50 and self.game.cube.cube_rotation <= 80:
-                pyxel.blt(self.game.cube.cube_x, self.game.cube.cube_y, 0, 48, 0, 16, 16, 0)
+            self.game.cube.draw_rotation_cube()
 
             #Obstacles
             for obstacle in self.obstacle_liste:
@@ -313,29 +305,3 @@ class Level:
             if self.ESC_level:
                 pyxel.blt(5, 5, 1, 48, 0, 16, 16,0) #croix (quitter)
                 pyxel.blt(self.game.screen_x/2-16, self.game.screen_y/2-16, 1, 0, 0, 32, 32,0) #bouton reprendre
-
-    def niveau_update(self):
-        if self.in_level:
-            #Level initialization
-            self.level_init()
-
-            #Get song position
-            self.game.music.get_song_pos()
-
-            #Gestion d'obstacles
-            self.obstacles_gestion()
-
-            #Obstacles:
-            self.deplacement_obstacles()
-
-            #Pourcentage du niveau:
-            self.level_pourc()
-
-            #Gestion du cube
-            self.cube_jump_rot()
-
-            #ESC
-            self.ESC()
-
-            #endlevel
-            self.is_end_level()
