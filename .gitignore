@@ -20,5 +20,3 @@ ENV/
 .env
 *.log
 
-#json
-test.json

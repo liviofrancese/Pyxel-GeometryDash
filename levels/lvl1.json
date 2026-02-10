@@ -799,191 +799,137 @@
         {
             "x": 1280,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 1465,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 1879,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 1778,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 1680,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2196,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2587,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 828,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 792,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 846,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 717,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 733,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 660,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 676,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2212,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2228,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2244,
             "y": 140,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2731,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2744,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2757,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2771,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2785,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2876,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2876,
             "y": 125,
-            "type": "spike",
-            "turned": false,
-            "used": false
+            "type": "spike"
         },
         {
             "x": 2876,
             "y": 68,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2945,
             "y": 140,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2945,
             "y": 68,
-            "type": "block",
-            "turned": false,
-            "used": false
+            "type": "block"
         },
         {
             "x": 2945,
