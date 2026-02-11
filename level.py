@@ -98,7 +98,7 @@ class Level:
                 'obs_bas': 16
             }
         }
-
+        
         self.death_sound_var = False
 
         #Game

@@ -11,6 +11,23 @@ class Menu:
         self.chosen_level_max = 0
         self.play_button_list = []
 
+        self.difficulty = {
+            'lvl1': {
+                'image': 2,
+                'x': 0,
+                'y': 48,
+                'width': 16,
+                'height': 16
+            },
+            'lvl2': {
+                'image': 2,
+                'x': 16,
+                'y': 48,
+                'width': 16,
+                'height': 16
+            }
+        }
+
 
     def menu_update(self):
         if self.in_menu:
@@ -87,5 +104,8 @@ class Menu:
                 pyxel.blt(10, self.game.screen_y/2, 1, 32, 16, 16, 16,0) #gauche
                 pyxel.blt(self.game.screen_x-10-16, self.game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
                 
-                #Affichage des boutons niveaux
+                #Bouton Jouer
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.chosen_level*32, 128, 32, 0)
+
+                #Difficulté Niveau
+                pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.difficulty[f"lvl{self.chosen_level}"]['image'], self.difficulty[f"lvl{self.chosen_level}"]['x'], self.difficulty[f"lvl{self.chosen_level}"]['y'], self.difficulty[f"lvl{self.chosen_level}"]['width'], self.difficulty[f"lvl{self.chosen_level}"]['height'], 0)
