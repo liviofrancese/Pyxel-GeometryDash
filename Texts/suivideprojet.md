@@ -222,3 +222,10 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - automatimasion de l'affichage des boutons de niveau dans le menu
 ### 📝 À faire:
 - class Cube: fonctions peuvent être ajouté
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">11/01/2026:</span>
+### ✅ Ajouts / Changements:
+- Choisir le nom du niveau lors du Save As

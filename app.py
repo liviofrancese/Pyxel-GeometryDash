@@ -18,6 +18,12 @@ class Game:
         pyxel.mouse(True)
         pyxel.load("geometrydash.pyxres")
 
+        self.folders = {
+            "default": os.getcwd(),
+            "levels": f"{os.getcwd()}\\levels",
+            "editlevels": f"{os.getcwd()}\\editlevels"
+        }
+
         #Class
         self.level_editor = LevelEditor(self)
         self.menu = Menu(self)
@@ -26,11 +32,7 @@ class Game:
         self.level = Level(self)
         self.music = Music(self)
 
-        self.folders = {
-            "default": os.getcwd(),
-            "levels": f"{os.getcwd()}\\levels",
-            "editlevels": f"{os.getcwd()}\\editlevels"
-        }
+
         self.levels_json()
 
 
