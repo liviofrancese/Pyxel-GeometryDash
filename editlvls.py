@@ -12,7 +12,6 @@ class LevelEditor:
         self.custum_level = f"{self.game.folders['levels']}\\custum_level.json"
 
         self.initialisation = False
-        self.lvl_json_path = None
         self.camera_x = 0
         self.camera_y = 0
 
@@ -155,7 +154,6 @@ class LevelEditor:
     def saving(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-4 and pyxel.mouse_x > self.game.screen_x-48 and pyxel.mouse_y < 8+10 and pyxel.mouse_y > 10:
             self.write_json(self.game.levels[self.game.level.current_level], self.obstacles_temp)
-            self.lvl_json_path = self.game.levels[self.game.level.current_level]
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-11 and pyxel.mouse_x > self.game.screen_x-43 and pyxel.mouse_y < 20+10 and pyxel.mouse_y > 20:
             self.save_as_text = True
 
@@ -174,9 +172,10 @@ class LevelEditor:
                 pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.level.obstacles_pyxres[obstacle['type']]['image'], self.game.level.obstacles_pyxres[obstacle['type']]['x'], self.game.level.obstacles_pyxres[obstacle['type']]['y'], self.game.level.obstacles_pyxres[obstacle['type']]['width'], self.game.level.obstacles_pyxres[obstacle['type']]['height'], 0)
 
         #Finish line
-        self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+25
-        if self.end_of_level-self.camera_x < self.game.screen_x:
-            pyxel.line(self.end_of_level-self.camera_x, 0, self.end_of_level-self.camera_x, self.game.cube.cube_y_min+16, 4)
+        if len(self.obstacles_temp) > 0:
+            self.end_of_level = max(obstacle['x'] for obstacle in self.obstacles_temp)+25
+            if self.end_of_level-self.camera_x < self.game.screen_x:
+                pyxel.line(self.end_of_level-self.camera_x, 0, self.end_of_level-self.camera_x, self.game.cube.cube_y_min+16, 4)
     
     def draw_placement_to_choose(self):
         pyxel.blt(self.obstacles_pos['place']['x'], self.obstacles_pos['place']['y'], 1, 104, 0, 16, 16, 0)

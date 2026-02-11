@@ -113,7 +113,12 @@ class Level:
 
 
     def reset_obstacles(self):
-        self.obstacle_liste, self.end = self.get_json_data(self.game.levels[self.current_level]) #type: ignore
+        if not self.current_level in self.game.levels:
+            file = f"{self.game.folders['levels']}\\{self.current_level}.json"
+            with open(file, 'w') as f:
+                data = {"level_length": 0, "obstacles": {}}
+                json.dump(data, f, indent=4)
+        self.obstacle_liste, self.end = self.get_json_data(self.game.levels[self.current_level])
 
 
     def get_json_data(self, file):
