@@ -49,7 +49,6 @@ class Game:
                 var_name = filename.replace(".json", "")
                 self.levels[var_name] = f"{levels_folder}\\{filename}"
                 self.menu.chosen_level_max += 1
-        self.menu.play_button()
 
     def default_var(self):
         #music

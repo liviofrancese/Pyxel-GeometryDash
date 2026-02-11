@@ -12,11 +12,6 @@ class Menu:
         self.play_button_list = []
 
 
-    def play_button(self):
-        for levels in range(self.chosen_level_max):
-            levels += 1
-            self.play_button_list.append({'y': levels*32})
-
     def menu_update(self):
         if self.in_menu:
             if not self.menu_song_var:
@@ -93,4 +88,4 @@ class Menu:
                 pyxel.blt(self.game.screen_x-10-16, self.game.screen_y/2, 1, 32, 0, 16, 16,0) #droit
                 
                 #Affichage des boutons niveaux
-                pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.play_button_list[self.chosen_level-1]['y'], 128, 32, 0)
+                pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.chosen_level*32, 128, 32, 0)

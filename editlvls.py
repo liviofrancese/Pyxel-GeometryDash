@@ -59,15 +59,13 @@ class LevelEditor:
         self.mouse_y = pyxel.mouse_y
         if self.mouse_y >= self.game.cube.cube_y_min+8:
             self.mouse_y = self.game.cube.cube_y_min+8
-    
     def choose_placement(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['place']['x']+16 and pyxel.mouse_x > self.obstacles_pos['place']['x'] and pyxel.mouse_y < self.obstacles_pos['place']['y']+16 and pyxel.mouse_y > self.obstacles_pos['place']['y']:
             self.choosen_placement = 'place'
             self.choosen_obstacles = 'spike'
             self.turned = False
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['delete']['x']+16 and pyxel.mouse_x > self.obstacles_pos['delete']['x'] and pyxel.mouse_y < self.obstacles_pos['delete']['y']+16 and pyxel.mouse_y > self.obstacles_pos['delete']['y']:
-            self.choosen_placement = 'delete'
-    
+            self.choosen_placement = 'delete'  
     def choose_obstacle(self):
         if self.choosen_placement == 'place':
             if (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['spike']['x']+16 and pyxel.mouse_x > self.obstacles_pos['spike']['x'] and pyxel.mouse_y < self.obstacles_pos['spike']['y']+16 and pyxel.mouse_y > self.obstacles_pos['spike']['y']):
@@ -84,8 +82,7 @@ class LevelEditor:
                 self.turned = False
             elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['orb']['x']+16 and pyxel.mouse_x > self.obstacles_pos['orb']['x'] and pyxel.mouse_y < self.obstacles_pos['orb']['y']+16 and pyxel.mouse_y > self.obstacles_pos['orb']['y']):
                 self.choosen_obstacles = 'orb'
-                self.turned = False
-
+                self.turned = Fals
     def editor_init(self):
         if not self.initialisation:
             self.game.level.reset_obstacles()
@@ -97,7 +94,6 @@ class LevelEditor:
             return
         if self.choosen_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
             self.obstacles_temp.append({"x": self.mouse_x-8+self.camera_x, "y": self.mouse_y-8, "type": self.choosen_obstacles})
-
     def remove_obstacle(self):
         if self.choosen_placement == 'delete' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             for obstacle in self.obstacles_temp:
