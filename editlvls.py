@@ -96,6 +96,8 @@ class LevelEditor:
             self.camera_y = 0
             self.choosen_placement = 'place'
             self.game.menu.menu_song_var = False
+            self.save_as_text = False
+            self.lvl_already_exists = False
     def mouse_pos(self):
         self.mouse_x = pyxel.mouse_x
         self.mouse_y = pyxel.mouse_y
