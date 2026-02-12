@@ -95,7 +95,7 @@ class Game:
         #Cheats
         self.cheats.cheats_update()
 
-        
+
 
 
     def draw(self):
@@ -111,7 +111,7 @@ class Game:
         #Cheats
         self.cheats.cheats_draw()
 
-        
+
 
 
 Game()
