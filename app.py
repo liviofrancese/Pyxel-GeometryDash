@@ -97,7 +97,6 @@ class Game:
 
 
 
-
     def draw(self):
         #Menu
         self.menu.menu_draw()
@@ -110,7 +109,6 @@ class Game:
 
         #Cheats
         self.cheats.cheats_draw()
-
 
 
 
