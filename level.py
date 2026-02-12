@@ -67,6 +67,8 @@ class Level:
                 'width': 16,
                 'height': 16
             }
+            
+            
         }
         self.collisions = {
             'cube': {
@@ -111,6 +113,7 @@ class Level:
                 'obs_haut': 14,
                 'obs_bas': 16
             }
+            
         }
         
         self.death_sound_var = False
@@ -176,6 +179,11 @@ class Level:
 
             #Utilisation de l'orb
             if obstacle['type']=='orb':
+                if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
+                    self.jumping()
+
+            #Utilisation du blue orb
+            if obstacle['type']=='blue orb':
                 if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
                     self.jumping()
             
