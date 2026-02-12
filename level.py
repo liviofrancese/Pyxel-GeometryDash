@@ -58,6 +58,13 @@ class Level:
                 'y': 16,
                 'width': 16,
                 'height': 16
+            },
+            'jump pad': {
+                'image': 0,
+                'x': 0,
+                'y': 32,
+                'width': 16,
+                'height': 16
             }
         }
         self.collisions = {
@@ -95,6 +102,12 @@ class Level:
                 'obs_gauche': 0,
                 'obs_droit': 16,
                 'obs_haut': 0,
+                'obs_bas': 16
+            },
+            'jump pad': {
+                'obs_gauche': 0,
+                'obs_droit': 16,
+                'obs_haut': 14,
                 'obs_bas': 16
             }
         }

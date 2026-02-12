@@ -1,4 +1,11 @@
 {
     "level_length": 0,
-    "obstacles": {}
+    "obstacles": [
+        {
+            "x": 250,
+            "y": 120,
+            "type": "jump pad"
+        }
+    ]
+
 }
