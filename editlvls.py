@@ -41,7 +41,8 @@ class LevelEditor:
             'turned spike': {'x': 20, 'y': self.game.screen_y-20},
             'block': {'x': 40, 'y': self.game.screen_y-40},
             'mur': {'x': 60, 'y': self.game.screen_y-40},
-            'orb': {'x': 80, 'y': self.game.screen_y-40}
+            'orb': {'x': 80, 'y': self.game.screen_y-40},
+            'jump pad': {'x': 80, 'y': self.game.screen_y-20}
         }
       
 
@@ -125,7 +126,10 @@ class LevelEditor:
                 self.turned = False
             elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['orb']['x']+16 and pyxel.mouse_x > self.obstacles_pos['orb']['x'] and pyxel.mouse_y < self.obstacles_pos['orb']['y']+16 and pyxel.mouse_y > self.obstacles_pos['orb']['y']):
                 self.choosen_obstacles = 'orb'
-                self.turned = Fals
+                self.turned = False
+            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['jump pad']['x']+16 and pyxel.mouse_x > self.obstacles_pos['jump pad']['x'] and pyxel.mouse_y < self.obstacles_pos['jump pad']['y']+16 and pyxel.mouse_y > self.obstacles_pos['jump pad']['y']):
+                self.choosen_obstacles = 'jump pad'
+                self.turned = False
     def editor_init(self):
         if not self.initialisation:
             self.game.level.reset_obstacles()
@@ -194,6 +198,8 @@ class LevelEditor:
         pyxel.blt(self.obstacles_pos['mur']['x'], self.obstacles_pos['mur']['y'], self.game.level.obstacles_pyxres['mur']['image'], self.game.level.obstacles_pyxres['mur']['x'], self.game.level.obstacles_pyxres['mur']['y'], self.game.level.obstacles_pyxres['mur']['width'], self.game.level.obstacles_pyxres['mur']['height'], 0)
         #Orb
         pyxel.blt(self.obstacles_pos['orb']['x'], self.obstacles_pos['orb']['y'], self.game.level.obstacles_pyxres['orb']['image'], self.game.level.obstacles_pyxres['orb']['x'], self.game.level.obstacles_pyxres['orb']['y'], self.game.level.obstacles_pyxres['orb']['width'], self.game.level.obstacles_pyxres['orb']['height'], 0)
+        #Jump Pad
+        pyxel.blt(self.obstacles_pos['jump pad']['x'], self.obstacles_pos['jump pad']['y'], self.game.level.obstacles_pyxres['jump pad']['image'], self.game.level.obstacles_pyxres['jump pad']['x'], self.game.level.obstacles_pyxres['jump pad']['y'], self.game.level.obstacles_pyxres['jump pad']['width'], self.game.level.obstacles_pyxres['jump pad']['height'], 0)
         #Choosen
         if self.choosen_placement == 'place' :
             pyxel.rectb(self.obstacles_pos[self.choosen_obstacles]['x']-2, self.obstacles_pos[self.choosen_obstacles]['y']-2, 20, 20, 10)    
