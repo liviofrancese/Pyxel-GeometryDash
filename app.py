@@ -52,29 +52,7 @@ class Game:
                 self.levels[var_name] = f"{levels_folder}\\{filename}"
                 self.menu.chosen_level_max += 1
 
-    def default_var(self):
-        #music
-        self.menu.menu_song_var = False
-        self.level.death_sound_var = False
-        self.level.music_position = None
-        self.level.sound = 0
-        self.level.sec = 0
-        self.level.sec_list = [0] * 64
 
-        #cube
-        self.cube.cube_y = self.cube.cube_y_min
-        self.level.velocity_y = 0
-        self.level.speed = self.level.velocity_x
-        self.level.jump = False
-        self.level.game_over = False
-        self.level.finish = False
-
-        #game
-        self.level.initialisation = False
-        self.level.ESC_level = False
-        #Pourcentage
-        self.level.end_pourc = self.level.end
-        self.cube.cube_x_pourc = 0
 
 
 
