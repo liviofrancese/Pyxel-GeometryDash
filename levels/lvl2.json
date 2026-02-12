@@ -1,5 +1,5 @@
 {
-    "level_length": 2435,
+    "level_length": 2877,
     "obstacles": [
         {
             "x": 250,
@@ -795,6 +795,176 @@
             "x": 2388,
             "y": 47,
             "type": "mur"
+        },
+        {
+            "x": 2489,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 2531,
+            "y": 140,
+            "type": "jump pad"
+        },
+        {
+            "x": 2588,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 2588,
+            "y": 122,
+            "type": "turned spike"
+        },
+        {
+            "x": 2604,
+            "y": 122,
+            "type": "turned spike"
+        },
+        {
+            "x": 2620,
+            "y": 122,
+            "type": "turned spike"
+        },
+        {
+            "x": 2604,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 2620,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 2587,
+            "y": 107,
+            "type": "block"
+        },
+        {
+            "x": 2600,
+            "y": 107,
+            "type": "block"
+        },
+        {
+            "x": 2613,
+            "y": 107,
+            "type": "block"
+        },
+        {
+            "x": 2621,
+            "y": 107,
+            "type": "block"
+        },
+        {
+            "x": 2660,
+            "y": 75,
+            "type": "block"
+        },
+        {
+            "x": 2702,
+            "y": 28,
+            "type": "block"
+        },
+        {
+            "x": 2716,
+            "y": 28,
+            "type": "block"
+        },
+        {
+            "x": 2729,
+            "y": 28,
+            "type": "block"
+        },
+        {
+            "x": 2660,
+            "y": 60,
+            "type": "jump pad"
+        },
+        {
+            "x": 2685,
+            "y": 50,
+            "type": "spike"
+        },
+        {
+            "x": 2645,
+            "y": 95,
+            "type": "spike"
+        },
+        {
+            "x": 2645,
+            "y": 111,
+            "type": "mur"
+        },
+        {
+            "x": 2685,
+            "y": 65,
+            "type": "mur"
+        },
+        {
+            "x": 2779,
+            "y": 54,
+            "type": "orb"
+        },
+        {
+            "x": 2795,
+            "y": 91,
+            "type": "orb"
+        },
+        {
+            "x": 2814,
+            "y": 127,
+            "type": "orb"
+        },
+        {
+            "x": 2819,
+            "y": -1,
+            "type": "block"
+        },
+        {
+            "x": 2819,
+            "y": 11,
+            "type": "block"
+        },
+        {
+            "x": 2819,
+            "y": 26,
+            "type": "turned spike"
+        },
+        {
+            "x": 2703,
+            "y": 43,
+            "type": "turned spike"
+        },
+        {
+            "x": 2716,
+            "y": 43,
+            "type": "turned spike"
+        },
+        {
+            "x": 2728,
+            "y": 43,
+            "type": "turned spike"
+        },
+        {
+            "x": 2852,
+            "y": 140,
+            "type": "block"
+        },
+        {
+            "x": 2852,
+            "y": 126,
+            "type": "block"
+        },
+        {
+            "x": 2852,
+            "y": 115,
+            "type": "block"
+        },
+        {
+            "x": 2852,
+            "y": 100,
+            "type": "spike"
         }
     ]
 }
