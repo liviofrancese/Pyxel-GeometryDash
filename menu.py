@@ -108,4 +108,5 @@ class Menu:
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.chosen_level*32, 128, 32, 0)
 
                 #Difficulté Niveau
-                pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.difficulty[f"lvl{self.chosen_level}"]['image'], self.difficulty[f"lvl{self.chosen_level}"]['x'], self.difficulty[f"lvl{self.chosen_level}"]['y'], self.difficulty[f"lvl{self.chosen_level}"]['width'], self.difficulty[f"lvl{self.chosen_level}"]['height'], 0)
+                if f"lvl{self.chosen_level}" in self.difficulty:
+                    pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.difficulty[f"lvl{self.chosen_level}"]['image'], self.difficulty[f"lvl{self.chosen_level}"]['x'], self.difficulty[f"lvl{self.chosen_level}"]['y'], self.difficulty[f"lvl{self.chosen_level}"]['width'], self.difficulty[f"lvl{self.chosen_level}"]['height'], 0)
