@@ -16,6 +16,8 @@ class Level:
         self.jump_status = False
         self.game_over = False
 
+        self.gravity_cube = False
+
         #Obstacles
         self.pourcentage = 0
         self.obstacle_liste = []
@@ -190,9 +192,21 @@ class Level:
             self.game.music.play_song()
             self.initialisation = True
     def jumping(self):
-        self.jump = True
-        self.velocity_y = self.jump_strength
-        self.game.cube.cube_rot = True
+        if not self.gravity_cube:
+            self.jump = True
+            self.velocity_y = self.jump_strength
+            self.game.cube.cube_rot = True
+        if self.gravity_cube:
+            self.jump = True
+            self.velocity_y = 0-self.jump_strength
+            self.game.cube.cube_rot = True
+    
+    def changing_gravity(self):
+        if not self.gravity_cube:
+            self.gravity_cube = True
+        if self.gravity_cube:
+            self.gravity_cube = False
+
     def deplacement_obstacles(self):
         for obstacle in self.obstacle_liste:
             obstacle['x'] -= self.speed
@@ -202,15 +216,34 @@ class Level:
     def obstacles_gestion(self):
         for obstacle in self.obstacle_liste:
             #Rester sur le bloc
-            if obstacle['type']=='block' or obstacle['type']=='mur':
-                cube_left = self.game.cube.cube_x
-                cube_right = self.game.cube.cube_x + 16
-                obs_left = obstacle['x']
-                obs_right = obstacle['x'] + 16
-                if (cube_right > obs_left and cube_left < obs_right and self.game.cube.cube_y + 16 <= obstacle['y'] and self.game.cube.cube_y + 16 + self.velocity_y >= obstacle['y']):
-                    self.game.cube.cube_y = obstacle['y'] - 16
-                    self.velocity_y = 0
-                    self.jump = False
+            if not self.gravity_cube:
+                if obstacle['type']=='block' or obstacle['type']=='mur':
+                    cube_gauche = self.game.cube.cube_x
+                    cube_droit = self.game.cube.cube_x + 16
+                    cube_bas = self.game.cube.cube_y + 16
+                    obs_gauche = obstacle['x']
+                    obs_droite = obstacle['x'] + 16
+                    obs_haut = obstacle['y']
+                    
+                    if (cube_droit > obs_gauche and cube_gauche < obs_droite and cube_bas <= obs_haut and cube_bas + self.velocity_y >= obs_haut):
+                        self.game.cube.cube_y = obstacle['y'] - 16
+                        self.velocity_y = 0
+                        self.jump = False
+
+            if self.gravity_cube:
+                if obstacle['type']=='block' or obstacle['type']=='mur':
+                    cube_gauche = self.game.cube.cube_x
+                    cube_droit = self.game.cube.cube_x + 16
+                    cube_haut = self.game.cube.cube_y
+                    obs_gauche = obstacle['x']
+                    obs_droite = obstacle['x'] + 16
+                    obs_bas = obstacle['y'] + 16
+                    
+                    if (cube_droit > obs_gauche and cube_gauche < obs_droite and cube_haut >= obs_bas and cube_haut - self.velocity_y <= obs_bas):
+                        self.game.cube.cube_y = obstacle['y'] + 16
+                        self.velocity_y = 0
+                        self.jump = False
+
 
             #Utilisation de l'orb
             if obstacle['type']=='orb':
@@ -219,8 +252,9 @@ class Level:
 
             #Utilisation du gravity orb
             if obstacle['type']=='gravity orb':
-                if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
-                    self.jumping()
+                if self.collision(obstacle) and pyxel.btnp(pyxel.KEY_SPACE):
+                    print('changing gravity')
+                    self.changing_gravity()
             
             #Utilisation du jump pad
             if obstacle['type']=='jump pad':
