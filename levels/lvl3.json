@@ -1,5 +1,5 @@
 {
-    "level_length": 421,
+    "level_length": 514,
     "obstacles": [
         {
             "x": 270,
@@ -50,6 +50,16 @@
             "x": 396,
             "y": 47,
             "type": "mur"
+        },
+        {
+            "x": 414,
+            "y": 76,
+            "type": "gravity orb"
+        },
+        {
+            "x": 489,
+            "y": 140,
+            "type": "jump pad"
         }
     ]
 }

@@ -48,14 +48,17 @@ class Cube:
         }
 
     def is_going_down(self):
-        if not self.game.level.gravity_cube:
-            if not self.going_down:
-                self.cube_y_before = self.cube_y
-                self.going_down = True
-            elif self.going_down:
-                self.cube_y_now = self.cube_y
-                self.going_down = False
+        if not self.going_down:
+            self.cube_y_before = self.cube_y
+            self.going_down = True
+        elif self.going_down:
+            self.cube_y_now = self.cube_y
+            self.going_down = False
+            if not self.game.level.gravity_cube:
                 if self.cube_y_before < self.cube_y_now:
+                    self.game.level.jump = True
+            if self.game.level.gravity_cube:
+                if self.cube_y_before > self.cube_y_now:
                     self.game.level.jump = True
 
     def jump_rotation(self):
@@ -67,7 +70,7 @@ class Cube:
             self.game.level.velocity_y += self.game.level.gravity
         if self.game.level.gravity_cube:
             self.cube_y -= self.game.level.velocity_y
-            self.game.level.velocity_y -= self.game.level.gravity
+            self.game.level.velocity_y += self.game.level.gravity
         self.is_going_down()
         self.game.level.end -= self.game.level.speed
 
@@ -85,6 +88,7 @@ class Cube:
                 self.cube_y = self.cube_y_min
                 self.game.level.jump = False
                 self.game.level.velocity_y = 0
+
 
     def draw_rotation_cube(self):
         if self.cube_rotation >= 0 and self.cube_rotation < 10:

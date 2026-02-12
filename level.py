@@ -158,6 +158,8 @@ class Level:
         self.game_over = False
         self.finish = False
 
+        self.gravity_cube = False
+
         #game
         self.initialisation = False
         self.ESC_level = False
@@ -192,19 +194,14 @@ class Level:
             self.game.music.play_song()
             self.initialisation = True
     def jumping(self):
-        if not self.gravity_cube:
-            self.jump = True
-            self.velocity_y = self.jump_strength
-            self.game.cube.cube_rot = True
-        if self.gravity_cube:
-            self.jump = True
-            self.velocity_y = 0-self.jump_strength
-            self.game.cube.cube_rot = True
+        self.jump = True
+        self.velocity_y = self.jump_strength
+        self.game.cube.cube_rot = True
     
     def changing_gravity(self):
         if not self.gravity_cube:
             self.gravity_cube = True
-        if self.gravity_cube:
+        elif self.gravity_cube:
             self.gravity_cube = False
 
     def deplacement_obstacles(self):
@@ -253,7 +250,6 @@ class Level:
             #Utilisation du gravity orb
             if obstacle['type']=='gravity orb':
                 if self.collision(obstacle) and pyxel.btnp(pyxel.KEY_SPACE):
-                    print('changing gravity')
                     self.changing_gravity()
             
             #Utilisation du jump pad
