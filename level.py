@@ -8,6 +8,7 @@ class Level:
         #Phisique du jeu
         self.gravity = 1.12
         self.jump_strength = -8.15
+        self.jump_pad_strength = -11.5
         self.velocity_x = 4.4
         self.speed = self.velocity_x
         self.velocity_y = 0
@@ -175,12 +176,17 @@ class Level:
 
             #Utilisation de l'orb
             if obstacle['type']=='orb':
-                if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE): #A CONTINUER
+                if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
                     self.jumping()
-                    obstacle['used']=True
+            
+            #Utilisation du jump pad
+            if obstacle['type']=='jump pad':
+                if self.collision(obstacle):
+                    self.jumping()
+                    self.velocity_y = self.jump_pad_strength
 
             #Collisions
-            if self.collision(obstacle) and not obstacle['type']=='orb' and self.game.cheats.noclip==False:
+            if self.collision(obstacle) and not obstacle['type']=='orb' and not obstacle['type']=='jump pad' and self.game.cheats.noclip==False:
                 self.game_over = True
                 self.game.music.death_sound()
                 self.stop()

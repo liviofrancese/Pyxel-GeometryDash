@@ -23,7 +23,6 @@ class LevelEditor:
         self.mouse_y = 0
 
         self.turned = False
-        self.used = False
 
         self.no_place_obstacle = 0
 
