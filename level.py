@@ -66,8 +66,14 @@ class Level:
                 'y': 32,
                 'width': 16,
                 'height': 16
+            },
+            'gravity orb': {
+                'image': 0,
+                'x': 48,
+                'y': 32,
+                'width': 16,
+                'height': 16
             }
-            
             
         }
         self.collisions = {
@@ -112,8 +118,13 @@ class Level:
                 'obs_droit': 16,
                 'obs_haut': 14,
                 'obs_bas': 16
-            }
-            
+            },
+            'gravity orb': {
+                'obs_gauche': 0,
+                'obs_droit': 16,
+                'obs_haut': 0,
+                'obs_bas': 16
+            },
         }
         
         self.death_sound_var = False
