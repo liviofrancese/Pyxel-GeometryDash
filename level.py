@@ -8,7 +8,7 @@ class Level:
         #Phisique du jeu
         self.gravity = 1.12
         self.jump_strength = -8.15
-        self.jump_pad_strength = -11.5
+        self.jump_pad_strength = -11
         self.velocity_x = 4.4
         self.speed = self.velocity_x
         self.velocity_y = 0
