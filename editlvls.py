@@ -164,6 +164,10 @@ class LevelEditor:
 
 
     def move_camera(self):
+        if pyxel.btnp(pyxel.KEY_UP):
+            self.camera_x = self.end_of_level-self.game.screen_x+50
+        if pyxel.btnp(pyxel.KEY_DOWN):
+            self.camera_x = 0
         if pyxel.btn(pyxel.KEY_RIGHT):
             self.camera_x += 10
         if pyxel.btn(pyxel.KEY_LEFT):
