@@ -217,8 +217,8 @@ class Level:
                 if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
                     self.jumping()
 
-            #Utilisation du blue orb
-            if obstacle['type']=='blue orb':
+            #Utilisation du gravity orb
+            if obstacle['type']=='gravity orb':
                 if self.collision(obstacle) and pyxel.btn(pyxel.KEY_SPACE):
                     self.jumping()
             
@@ -229,7 +229,7 @@ class Level:
                     self.velocity_y = self.jump_pad_strength
 
             #Collisions
-            if self.collision(obstacle) and not obstacle['type']=='orb' and not obstacle['type']=='jump pad' and self.game.cheats.noclip==False:
+            if self.collision(obstacle) and not obstacle['type']=='orb' and not obstacle['type']=='jump pad' and not obstacle['type']=='gravity orb' and self.game.cheats.noclip==False:
                 self.game_over = True
                 self.game.music.death_sound()
                 self.stop()
