@@ -192,18 +192,9 @@ class LevelEditor:
         pyxel.rectb(self.obstacles_pos[self.choosen_placement]['x']-1, self.obstacles_pos[self.choosen_placement]['y']-1, 18, 18,2)
     
     def draw_obstacles_to_choose(self):
-        #Spike
-        pyxel.blt(self.obstacles_pos['spike']['x'], self.obstacles_pos['spike']['y'], self.game.level.obstacles_pyxres['spike']['image'], self.game.level.obstacles_pyxres['spike']['x'], self.game.level.obstacles_pyxres['spike']['y'], self.game.level.obstacles_pyxres['spike']['width'], self.game.level.obstacles_pyxres['spike']['height'], 0)
-        #Turned spike
-        pyxel.blt(self.obstacles_pos['turned spike']['x'], self.obstacles_pos['turned spike']['y'], self.game.level.obstacles_pyxres['turned spike']['image'], self.game.level.obstacles_pyxres['turned spike']['x'], self.game.level.obstacles_pyxres['turned spike']['y'], self.game.level.obstacles_pyxres['turned spike']['width'], self.game.level.obstacles_pyxres['turned spike']['height'], 0)
-        #Block
-        pyxel.blt(self.obstacles_pos['block']['x'], self.obstacles_pos['block']['y'], self.game.level.obstacles_pyxres['block']['image'], self.game.level.obstacles_pyxres['block']['x'], self.game.level.obstacles_pyxres['block']['y'], self.game.level.obstacles_pyxres['block']['width'], self.game.level.obstacles_pyxres['block']['height'], 0)
-        #Mur
-        pyxel.blt(self.obstacles_pos['mur']['x'], self.obstacles_pos['mur']['y'], self.game.level.obstacles_pyxres['mur']['image'], self.game.level.obstacles_pyxres['mur']['x'], self.game.level.obstacles_pyxres['mur']['y'], self.game.level.obstacles_pyxres['mur']['width'], self.game.level.obstacles_pyxres['mur']['height'], 0)
-        #Orb
-        pyxel.blt(self.obstacles_pos['orb']['x'], self.obstacles_pos['orb']['y'], self.game.level.obstacles_pyxres['orb']['image'], self.game.level.obstacles_pyxres['orb']['x'], self.game.level.obstacles_pyxres['orb']['y'], self.game.level.obstacles_pyxres['orb']['width'], self.game.level.obstacles_pyxres['orb']['height'], 0)
-        #Jump Pad
-        pyxel.blt(self.obstacles_pos['jump pad']['x'], self.obstacles_pos['jump pad']['y'], self.game.level.obstacles_pyxres['jump pad']['image'], self.game.level.obstacles_pyxres['jump pad']['x'], self.game.level.obstacles_pyxres['jump pad']['y'], self.game.level.obstacles_pyxres['jump pad']['width'], self.game.level.obstacles_pyxres['jump pad']['height'], 0)
+        for obstacle in self.game.level.obstacles_pyxres:
+            pyxel.blt(self.obstacles_pos[obstacle]['x'], self.obstacles_pos[obstacle]['y'], self.game.level.obstacles_pyxres[obstacle]['image'], self.game.level.obstacles_pyxres[obstacle]['x'], self.game.level.obstacles_pyxres[obstacle]['y'], self.game.level.obstacles_pyxres[obstacle]['width'], self.game.level.obstacles_pyxres[obstacle]['height'], 0)
+
         #Choosen
         if self.choosen_placement == 'place' :
             pyxel.rectb(self.obstacles_pos[self.choosen_obstacles]['x']-2, self.obstacles_pos[self.choosen_obstacles]['y']-2, 20, 20, 10)    
