@@ -237,6 +237,7 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 
 ## 📅 <span style="color:orange">12/01/2026:</span>
 ### ✅ Ajouts / Changements:
-- Ajouts du jump pad
-- Bugs fix
+- Ajouts du jump pad + gravity orb
+- Bugs fix + automatisation
 - On a continué le niveau 2
+- Changement de gravité fonctionnel
