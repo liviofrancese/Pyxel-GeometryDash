@@ -125,6 +125,30 @@ class Level:
         self.sec = 0
         self.sec_list = [0] * 64
 
+    def default_var(self):
+        #music
+        self.game.menu.menu_song_var = False
+        self.death_sound_var = False
+        self.music_position = None
+        self.sound = 0
+        self.sec = 0
+        self.sec_list = [0] * 64
+
+        #cube
+        self.game.cube.cube_y = self.game.cube.cube_y_min
+        self.velocity_y = 0
+        self.speed = self.velocity_x
+        self.jump = False
+        self.game_over = False
+        self.finish = False
+
+        #game
+        self.initialisation = False
+        self.ESC_level = False
+        #Pourcentage
+        self.end_pourc = self.end
+        self.game.cube.cube_x_pourc = 0
+
 
     def reset_obstacles(self):
         if not self.current_level in self.game.levels:
@@ -147,7 +171,7 @@ class Level:
         if not self.initialisation:
             pyxel.mouse(False)
             self.reset_obstacles()
-            self.game.default_var()
+            self.default_var()
             self.game.music.stop_allsongs()
             self.game.music.play_song()
             self.initialisation = True
@@ -240,7 +264,7 @@ class Level:
     def QUIT_LEVEL(self):
         self.reset_obstacles()
         self.game.music.stop_allsongs()
-        self.game.default_var()
+        self.default_var()
         #game
         self.in_level = False
         self.game.menu.in_menu = True
