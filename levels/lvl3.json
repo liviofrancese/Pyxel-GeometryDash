@@ -1,5 +1,5 @@
 {
-    "level_length": 1410,
+    "level_length": 2139,
     "obstacles": [
         {
             "x": 336,
@@ -982,21 +982,6 @@
             "type": "orb"
         },
         {
-            "x": 1194,
-            "y": 105,
-            "type": "mur"
-        },
-        {
-            "x": 1210,
-            "y": 89,
-            "type": "mur"
-        },
-        {
-            "x": 1226,
-            "y": 73,
-            "type": "mur"
-        },
-        {
             "x": 1242,
             "y": 57,
             "type": "mur"
@@ -1025,11 +1010,6 @@
             "x": 1321,
             "y": 57,
             "type": "mur"
-        },
-        {
-            "x": 1312,
-            "y": 88,
-            "type": "gravity orb"
         },
         {
             "x": 1337,
@@ -1075,6 +1055,311 @@
             "x": 1385,
             "y": 42,
             "type": "block"
+        },
+        {
+            "x": 1362,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 1371,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 1380,
+            "y": 140,
+            "type": "spike"
+        },
+        {
+            "x": 1428,
+            "y": 111,
+            "type": "orb"
+        },
+        {
+            "x": 1226,
+            "y": 57,
+            "type": "mur"
+        },
+        {
+            "x": 1210,
+            "y": 73,
+            "type": "mur"
+        },
+        {
+            "x": 1194,
+            "y": 89,
+            "type": "mur"
+        },
+        {
+            "x": 1179,
+            "y": 89,
+            "type": "mur"
+        },
+        {
+            "x": 1195,
+            "y": 73,
+            "type": "mur"
+        },
+        {
+            "x": 1210,
+            "y": 57,
+            "type": "mur"
+        },
+        {
+            "x": 1293,
+            "y": 89,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1465,
+            "y": 76,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1447,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1460,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1474,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1488,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1502,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1516,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1530,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1544,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1558,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1572,
+            "y": 20,
+            "type": "block"
+        },
+        {
+            "x": 1503,
+            "y": 140,
+            "type": "mur"
+        },
+        {
+            "x": 1503,
+            "y": 124,
+            "type": "mur"
+        },
+        {
+            "x": 1503,
+            "y": 108,
+            "type": "mur"
+        },
+        {
+            "x": 1503,
+            "y": 92,
+            "type": "spike"
+        },
+        {
+            "x": 1542,
+            "y": 53,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1587,
+            "y": 5,
+            "type": "mur"
+        },
+        {
+            "x": 1603,
+            "y": 5,
+            "type": "mur"
+        },
+        {
+            "x": 1617,
+            "y": 5,
+            "type": "mur"
+        },
+        {
+            "x": 1587,
+            "y": 21,
+            "type": "turned spike"
+        },
+        {
+            "x": 1603,
+            "y": 21,
+            "type": "turned spike"
+        },
+        {
+            "x": 1617,
+            "y": 21,
+            "type": "turned spike"
+        },
+        {
+            "x": 1639,
+            "y": 124,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1820,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1834,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1848,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1862,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1876,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1875,
+            "y": 41,
+            "type": "jump pad"
+        },
+        {
+            "x": 1887,
+            "y": 99,
+            "type": "gravity orb"
+        },
+        {
+            "x": 2114,
+            "y": -1,
+            "type": "turned spike"
+        },
+        {
+            "x": 1686,
+            "y": 96,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1664,
+            "y": 39,
+            "type": "gravity orb"
+        },
+        {
+            "x": 1708,
+            "y": 39,
+            "type": "orb"
+        },
+        {
+            "x": 1809,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1800,
+            "y": 39,
+            "type": "block"
+        },
+        {
+            "x": 1746,
+            "y": 54,
+            "type": "block"
+        },
+        {
+            "x": 1759,
+            "y": 54,
+            "type": "block"
+        },
+        {
+            "x": 1770,
+            "y": 54,
+            "type": "block"
+        },
+        {
+            "x": 1780,
+            "y": 54,
+            "type": "block"
+        },
+        {
+            "x": 1786,
+            "y": 54,
+            "type": "block"
+        },
+        {
+            "x": 1792,
+            "y": 45,
+            "type": "block"
+        },
+        {
+            "x": 1648,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1664,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1680,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1696,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1712,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1728,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1744,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 1633,
+            "y": 0,
+            "type": "turned spike"
         }
     ]
 }

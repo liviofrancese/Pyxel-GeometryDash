@@ -74,6 +74,8 @@ class Cube:
         self.is_going_down()
         self.game.level.end -= self.game.level.speed
 
+        if self.game.level.velocity_y >= 20:
+            self.game.level.velocity = 20
         if self.cube_rot:
             self.cube_rotation += 4
             if self.cube_rotation >= 80:
