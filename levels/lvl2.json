@@ -1610,6 +1610,176 @@
             "x": 3343,
             "y": -1,
             "type": "turned spike"
+        },
+        {
+            "x": 2967,
+            "y": 33,
+            "type": "block"
+        },
+        {
+            "x": 2985,
+            "y": 44,
+            "type": "block"
+        },
+        {
+            "x": 3048,
+            "y": 67,
+            "type": "block"
+        },
+        {
+            "x": 3234,
+            "y": 69,
+            "type": "block"
+        },
+        {
+            "x": 3328,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3312,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3296,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3280,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3265,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3249,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3234,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3219,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3204,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3189,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3173,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3157,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3141,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3125,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2881,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2895,
+            "y": -1,
+            "type": "turned spike"
+        },
+        {
+            "x": 2910,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2926,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2941,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2957,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2973,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 2989,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3004,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3020,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3036,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3052,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3067,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3083,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3099,
+            "y": 0,
+            "type": "turned spike"
+        },
+        {
+            "x": 3112,
+            "y": 0,
+            "type": "turned spike"
         }
     ]
 }
