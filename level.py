@@ -79,23 +79,17 @@ class Level:
             
         }
         self.collisions = {
-            'cube': {
-                'cube_gauche': self.game.cube.cube_x,
-                'cube_droit': self.game.cube.cube_x+16,
-                'cube_haut': self.game.cube.cube_y,
-                'cube_bas': self.game.cube.cube_y+16
-            },
             'spike': {
                 'obs_gauche': 4,
                 'obs_droit': 11,
-                'obs_haut': 0,
+                'obs_haut': 7,
                 'obs_bas': 16
             },
             'turned spike': {
                 'obs_gauche': 4,
                 'obs_droit': 11,
-                'obs_haut': 7,
-                'obs_bas': 16
+                'obs_haut': 0,
+                'obs_bas': 7
             },
             'block': {
                 'obs_gauche': 0,
@@ -110,10 +104,10 @@ class Level:
                 'obs_bas': 16
             },
             'orb': {
-                'obs_gauche': 0,
-                'obs_droit': 16,
-                'obs_haut': 0,
-                'obs_bas': 16
+                'obs_gauche': -2,
+                'obs_droit': 18,
+                'obs_haut': -2,
+                'obs_bas': 18
             },
             'jump pad': {
                 'obs_gauche': 0,
@@ -122,10 +116,10 @@ class Level:
                 'obs_bas': 16
             },
             'gravity orb': {
-                'obs_gauche': 0,
-                'obs_droit': 16,
-                'obs_haut': 0,
-                'obs_bas': 16
+                'obs_gauche': -2,
+                'obs_droit': 18,
+                'obs_haut': -2,
+                'obs_bas': 18
             },
         }
         
@@ -199,6 +193,7 @@ class Level:
         self.game.cube.cube_rot = True
     
     def changing_gravity(self):
+        self.velocity_y = -self.jump_strength-3
         if not self.gravity_cube:
             self.gravity_cube = True
         elif self.gravity_cube:
@@ -272,10 +267,10 @@ class Level:
 
         #Mise à jour de la position du cube
         self.collisions['cube'] = {
-                'cube_gauche': self.game.cube.cube_x,
-                'cube_droit': self.game.cube.cube_x+16,
-                'cube_haut': self.game.cube.cube_y,
-                'cube_bas': self.game.cube.cube_y+16
+                'cube_gauche': self.game.cube.cube_x+1,
+                'cube_droit': self.game.cube.cube_x+15,
+                'cube_haut': self.game.cube.cube_y+1,
+                'cube_bas': self.game.cube.cube_y+15
             }
 
         obs_gauche = obstacle['x']+self.collisions[obstacle['type']]['obs_gauche']
