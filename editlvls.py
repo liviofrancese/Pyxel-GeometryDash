@@ -136,9 +136,7 @@ class LevelEditor:
                 self.turned = False
     def editor_init(self):
         if not self.initialisation:
-            self.game.level.reset_obstacles()
-            self.obstacles_temp = self.game.level.obstacle_liste
-            self.end_of_level = self.game.level.end
+            self.obstacles_temp, self.end_of_level, self.difficulty = self.game.level.get_lvl_data()
             self.initialisation = True
     def place_obstacle(self):
         if self.no_place_obstacle < 2:
@@ -157,7 +155,7 @@ class LevelEditor:
 
     def write_json(self, file, data):
         with open (file, "w") as f:
-            data = {"level_length": self.end_of_level, "obstacles": data}
+            data = {"level_length": self.end_of_level, 'difficulty': self.difficulty, "obstacles": data}
             json.dump(data, f, indent=4)
 
     def saving(self):
@@ -165,6 +163,9 @@ class LevelEditor:
             self.write_json(self.game.levels[self.game.level.current_level], self.obstacles_temp)
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-11 and pyxel.mouse_x > self.game.screen_x-43 and pyxel.mouse_y < 20+10 and pyxel.mouse_y > 20:
             self.save_as_text = True
+
+
+
 
 
     def move_camera(self):
@@ -249,6 +250,11 @@ class LevelEditor:
                 pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.level.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
 
             self.draw_save_as()
+
+            #Difficulté du niveau
+            diff = self.difficulty if self.difficulty in self.game.menu.difficulty_pyxres else 'NA'
+            pyxel.rect(self.game.screen_x-19, self.game.screen_y-19, 18, 18, 1)
+            pyxel.blt(self.game.screen_x-18, self.game.screen_y-18, self.game.menu.difficulty_pyxres[diff]['image'], self.game.menu.difficulty_pyxres[diff]['x'], self.game.menu.difficulty_pyxres[diff]['y'], self.game.menu.difficulty_pyxres[diff]['width'], self.game.menu.difficulty_pyxres[diff]['height'], 0)  
 
             #Bouton pour revenir au menu
             pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)

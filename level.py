@@ -128,7 +128,7 @@ class Level:
         #Game
         self.in_level = False
         self.ESC_level = False
-        self.current_level = None
+        self.current_level = 'lvl1'
 
         self.music_position = None
         self.sound = 0
@@ -162,21 +162,24 @@ class Level:
         self.game.cube.cube_x_pourc = 0
 
 
-    def reset_obstacles(self):
+    def get_lvl_data(self):
         if not self.current_level in self.game.levels:
-            file = f"{self.game.folders['levels']}\\{self.current_level}.json"
-            with open(file, 'w') as f:
-                data = {"level_length": 0, "obstacles": {}}
+            new_file = f"{self.game.folders['levels']}\\{self.current_level}.json"
+            with open(new_file, 'w') as f:
+                data = {"level_length": 0, "difficulty": "NA", "obstacles": {}}
                 json.dump(data, f, indent=4)
-        self.obstacle_liste, self.end = self.get_json_data(self.game.levels[self.current_level])
 
-
-    def get_json_data(self, file):
+        file = self.game.levels[self.current_level]
         with open(file, 'r') as f:
             data = json.load(f)
             level_length = data['level_length']
             obstacle_liste = data['obstacles']
-        return obstacle_liste, level_length
+            difficulty = data['difficulty']
+        return obstacle_liste, level_length, difficulty
+
+    def reset_obstacles(self):
+        self.obstacle_liste, self.end, self.difficulty = self.get_lvl_data()
+
     
 
     def level_init(self):

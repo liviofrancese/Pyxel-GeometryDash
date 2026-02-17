@@ -1,5 +1,6 @@
 {
     "level_length": 3368,
+    "difficulty": "hard",
     "obstacles": [
         {
             "x": 250,
