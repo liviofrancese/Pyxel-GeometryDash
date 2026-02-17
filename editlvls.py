@@ -177,7 +177,7 @@ class LevelEditor:
 
             pyxel.rect(self.difficulty_pos[self.difficulty]['x']-1, self.difficulty_pos[self.difficulty]['y']-1, 18, 18, 2)
             for diff in self.difficulty_pos:
-                pyxel.blt(self.difficulty_pos[diff]['x'], self.difficulty_pos[diff]['y'], self.game.menu.difficulty_pyxres[diff]['image'], self.game.menu.difficulty_pyxres[diff]['x'], self.game.menu.difficulty_pyxres[diff]['y'], self.game.menu.difficulty_pyxres[diff]['width'], self.game.menu.difficulty_pyxres[diff]['height'], 0)
+                pyxel.blt(self.difficulty_pos[diff]['x'], self.difficulty_pos[diff]['y'], self.game.pyxres.difficulty[diff]['image'], self.game.pyxres.difficulty[diff]['x'], self.game.pyxres.difficulty[diff]['y'], self.game.pyxres.difficulty[diff]['width'], self.game.pyxres.difficulty[diff]['height'], 0)
 
             #Quit
             pyxel.blt(self.game.screen_x/2-60, self.game.screen_y/2-77, 1, 48, 0, 16, 16,0)
@@ -200,7 +200,7 @@ class LevelEditor:
     def draw_obstacles(self):
         for obstacle in self.obstacles_temp:
             if obstacle['x']-self.camera_x < self.game.screen_x:
-                pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.level.obstacles_pyxres[obstacle['type']]['image'], self.game.level.obstacles_pyxres[obstacle['type']]['x'], self.game.level.obstacles_pyxres[obstacle['type']]['y'], self.game.level.obstacles_pyxres[obstacle['type']]['width'], self.game.level.obstacles_pyxres[obstacle['type']]['height'], 0)
+                pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.pyxres.obstacles[obstacle['type']]['image'], self.game.pyxres.obstacles[obstacle['type']]['x'], self.game.pyxres.obstacles[obstacle['type']]['y'], self.game.pyxres.obstacles[obstacle['type']]['width'], self.game.pyxres.obstacles[obstacle['type']]['height'], 0)
                 
 
         #Finish line
@@ -215,8 +215,8 @@ class LevelEditor:
         pyxel.rectb(self.obstacles_pos[self.choosen_placement]['x']-1, self.obstacles_pos[self.choosen_placement]['y']-1, 18, 18,2)
     
     def draw_obstacles_to_choose(self):
-        for obstacle in self.game.level.obstacles_pyxres:
-            pyxel.blt(self.obstacles_pos[obstacle]['x'], self.obstacles_pos[obstacle]['y'], self.game.level.obstacles_pyxres[obstacle]['image'], self.game.level.obstacles_pyxres[obstacle]['x'], self.game.level.obstacles_pyxres[obstacle]['y'], self.game.level.obstacles_pyxres[obstacle]['width'], self.game.level.obstacles_pyxres[obstacle]['height'], 0)
+        for obstacle in self.game.pyxres.obstacles:
+            pyxel.blt(self.obstacles_pos[obstacle]['x'], self.obstacles_pos[obstacle]['y'], self.game.pyxres.obstacles[obstacle]['image'], self.game.pyxres.obstacles[obstacle]['x'], self.game.pyxres.obstacles[obstacle]['y'], self.game.pyxres.obstacles[obstacle]['width'], self.game.pyxres.obstacles[obstacle]['height'], 0)
 
         #Choosen
         if self.choosen_placement == 'place' :
@@ -271,14 +271,14 @@ class LevelEditor:
 
             #Obstacle on mouse
             if self.choosen_placement == 'place' and not self.in_choosing_difficulty:
-                pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.level.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
+                pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.pyxres.obstacles[self.choosen_obstacles]['image'], self.game.pyxres.obstacles[self.choosen_obstacles]['x'], self.game.pyxres.obstacles[self.choosen_obstacles]['y'], self.game.pyxres.obstacles[self.choosen_obstacles]['width'], self.game.pyxres.obstacles[self.choosen_obstacles]['height'], 0)
 
             self.draw_save_as()
 
             #Difficulté du niveau
-            diff = self.difficulty if self.difficulty in self.game.menu.difficulty_pyxres else 'NA'
+            diff = self.difficulty if self.difficulty in self.game.pyxres.difficulty else 'NA'
             pyxel.rect(self.game.screen_x-19, self.game.screen_y-19, 18, 18, 1)
-            pyxel.blt(self.game.screen_x-18, self.game.screen_y-18, self.game.menu.difficulty_pyxres[diff]['image'], self.game.menu.difficulty_pyxres[diff]['x'], self.game.menu.difficulty_pyxres[diff]['y'], self.game.menu.difficulty_pyxres[diff]['width'], self.game.menu.difficulty_pyxres[diff]['height'], 0)  
+            pyxel.blt(self.game.screen_x-18, self.game.screen_y-18, self.game.pyxres.difficulty[diff]['image'], self.game.pyxres.difficulty[diff]['x'], self.game.pyxres.difficulty[diff]['y'], self.game.pyxres.difficulty[diff]['width'], self.game.pyxres.difficulty[diff]['height'], 0)  
 
             #Bouton pour revenir au menu
             pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)

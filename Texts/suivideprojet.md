@@ -252,3 +252,4 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
     - Difficulté des niveaux automatisation
     - editlvls.py
 - Changer la difficulté du niveau dans l'éditeur
+- pyxres.py --> image, x, y, longueur et largeur des dessins dans le .pyxres

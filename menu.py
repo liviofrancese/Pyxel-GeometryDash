@@ -12,29 +12,7 @@ class Menu:
         self.chosen_level_max = 0
         self.play_button_list = []
 
-        self.difficulty_pyxres = {
-            'NA': {
-                'image': 2,
-                'x': 0,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            },
-            'normal': {
-                'image': 2,
-                'x': 16,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            },
-            'hard': {
-                'image': 2,
-                'x': 32,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            }
-        }
+        
         
 
 
@@ -125,5 +103,5 @@ class Menu:
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.chosen_level*32, 128, 32, 0)
 
                 #Difficulté Niveau
-                pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.difficulty_pyxres[self.difficulty]['image'], self.difficulty_pyxres[self.difficulty]['x'], self.difficulty_pyxres[self.difficulty]['y'], self.difficulty_pyxres[self.difficulty]['width'], self.difficulty_pyxres[self.difficulty]['height'], 0)
+                pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.game.pyxres.difficulty[self.difficulty]['image'], self.game.pyxres.difficulty[self.difficulty]['x'], self.game.pyxres.difficulty[self.difficulty]['y'], self.game.pyxres.difficulty[self.difficulty]['width'], self.game.pyxres.difficulty[self.difficulty]['height'], 0)
         

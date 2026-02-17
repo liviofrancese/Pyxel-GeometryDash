@@ -16,36 +16,6 @@ class Cube:
         self.cube_y_before = 0
         self.cube_y_now = 0
 
-        self.cube_pyxres = {
-            'basic': {
-                'image': 0,
-                'x': 0,
-                'y': 0,
-                'width': 16,
-                'height': 16
-            },
-            '2': {
-                'image': 0,
-                'x': 16,
-                'y': 0,
-                'width': 16,
-                'height': 16
-            },
-            '3': {
-                'image': 0,
-                'x': 32,
-                'y': 0,
-                'width': 16,
-                'height': 16
-            },
-            '4': {
-                'image': 0,
-                'x': 48,
-                'y': 0,
-                'width': 16,
-                'height': 16
-            }
-        }
 
     def is_going_down(self):
         if not self.going_down:
@@ -94,10 +64,10 @@ class Cube:
 
     def draw_rotation_cube(self):
         if self.cube_rotation >= 0 and self.cube_rotation < 10:
-            pyxel.blt(self.cube_x, self.cube_y, self.cube_pyxres['basic']['image'], self.cube_pyxres['basic']['x'], self.cube_pyxres['basic']['y'], self.cube_pyxres['basic']['width'], self.cube_pyxres['basic']['height'], 0)
+            pyxel.blt(self.cube_x, self.cube_y, self.game.pyxres.cube['basic']['image'], self.game.pyxres.cube['basic']['x'], self.game.pyxres.cube['basic']['y'], self.game.pyxres.cube['basic']['width'], self.game.pyxres.cube['basic']['height'], 0)
         elif self.cube_rotation >= 10 and self.cube_rotation < 40:
-            pyxel.blt(self.cube_x, self.cube_y, self.cube_pyxres['2']['image'], self.cube_pyxres['2']['x'], self.cube_pyxres['2']['y'], self.cube_pyxres['2']['width'], self.cube_pyxres['2']['height'], 0)
+            pyxel.blt(self.cube_x, self.cube_y, self.game.pyxres.cube['2']['image'], self.game.pyxres.cube['2']['x'], self.game.pyxres.cube['2']['y'], self.game.pyxres.cube['2']['width'], self.game.pyxres.cube['2']['height'], 0)
         elif self.cube_rotation >= 40 and self.cube_rotation < 50:
-            pyxel.blt(self.cube_x, self.cube_y, self.cube_pyxres['3']['image'], self.cube_pyxres['3']['x'], self.cube_pyxres['3']['y'], self.cube_pyxres['3']['width'], self.cube_pyxres['3']['height'], 0)
+            pyxel.blt(self.cube_x, self.cube_y, self.game.pyxres.cube['3']['image'], self.game.pyxres.cube['3']['x'], self.game.pyxres.cube['3']['y'], self.game.pyxres.cube['3']['width'], self.game.pyxres.cube['3']['height'], 0)
         elif self.cube_rotation >= 50 and self.cube_rotation <= 80:
-            pyxel.blt(self.cube_x, self.cube_y, self.cube_pyxres['4']['image'], self.cube_pyxres['4']['x'], self.cube_pyxres['4']['y'],  self.cube_pyxres['4']['width'], self.cube_pyxres['4']['height'], 0)
+            pyxel.blt(self.cube_x, self.cube_y, self.game.pyxres.cube['4']['image'], self.game.pyxres.cube['4']['x'], self.game.pyxres.cube['4']['y'],  self.game.pyxres.cube['4']['width'], self.game.pyxres.cube['4']['height'], 0)

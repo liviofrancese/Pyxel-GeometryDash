@@ -26,58 +26,7 @@ class Level:
         self.end = 0
         self.end_pourc = 0
 
-        self.obstacles_pyxres = {
-            'spike': {
-                'image': 0,
-                'x': 16,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'turned spike': {
-                'image': 0,
-                'x': 16,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            },
-            'block': {
-                'image': 0,
-                'x': 32,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'mur': {
-                'image': 0,
-                'x': 0,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'orb': {
-                'image': 0,
-                'x': 48,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'jump pad': {
-                'image': 0,
-                'x': 0,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            },
-            'gravity orb': {
-                'image': 0,
-                'x': 48,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            }
-            
-        }
+        
         self.collisions = {
             'spike': {
                 'obs_gauche': 4,
@@ -384,7 +333,7 @@ class Level:
             #Obstacles
             for obstacle in self.obstacle_liste:
                 if obstacle['x'] < self.game.screen_x:
-                    pyxel.blt(obstacle['x'], obstacle['y'], self.obstacles_pyxres[obstacle['type']]['image'], self.obstacles_pyxres[obstacle['type']]['x'], self.obstacles_pyxres[obstacle['type']]['y'], self.obstacles_pyxres[obstacle['type']]['width'], self.obstacles_pyxres[obstacle['type']]['height'], 0)
+                    pyxel.blt(obstacle['x'], obstacle['y'], self.game.pyxres.obstacles[obstacle['type']]['image'], self.game.pyxres.obstacles[obstacle['type']]['x'], self.game.pyxres.obstacles[obstacle['type']]['y'], self.game.pyxres.obstacles[obstacle['type']]['width'], self.game.pyxres.obstacles[obstacle['type']]['height'], 0)
 
             if self.game_over:
                 pyxel.text(70, 70, "GAME OVER", 8)
