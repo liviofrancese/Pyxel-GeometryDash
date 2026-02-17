@@ -46,7 +46,13 @@ class LevelEditor:
             'gravity orb': {'x': 100, 'y': self.game.screen_y-40},
         }
       
+        self.difficulty_pos = {
+            'NA': {'x': self.game.screen_x/2-58, 'y': self.game.screen_y/2-58},
+            'normal': {'x': self.game.screen_x/2-58+18, 'y': self.game.screen_y/2-58},
+            'hard': {'x': self.game.screen_x/2-58+18+18, 'y': self.game.screen_y/2-58}
+        }
 
+        self.in_choosing_difficulty = False
 
                 
 
@@ -99,6 +105,8 @@ class LevelEditor:
             self.game.menu.menu_song_var = False
             self.save_as_text = False
             self.lvl_already_exists = False
+            self.in_choosing_difficulty = False
+
     def mouse_pos(self):
         self.mouse_x = pyxel.mouse_x
         self.mouse_y = pyxel.mouse_y
@@ -141,7 +149,7 @@ class LevelEditor:
     def place_obstacle(self):
         if self.no_place_obstacle < 2:
             return
-        if self.choosen_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
+        if not self.in_choosing_difficulty and self.choosen_placement == 'place' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_y-16 <= self.game.cube.cube_y_min and not (pyxel.mouse_x < self.game.screen_x-11+8 and pyxel.mouse_x > self.game.screen_x-43-8 and pyxel.mouse_y < 20+10+8 and pyxel.mouse_y > 20-8) and not (pyxel.mouse_x < self.game.screen_x-4+8 and pyxel.mouse_x > self.game.screen_x-48-8 and pyxel.mouse_y < 8+10+8 and pyxel.mouse_y > 10-8):
             self.obstacles_temp.append({"x": self.mouse_x-8+self.camera_x, "y": self.mouse_y-8, "type": self.choosen_obstacles})
     def remove_obstacle(self):
         if self.choosen_placement == 'delete' and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
@@ -165,6 +173,30 @@ class LevelEditor:
             self.save_as_text = True
 
 
+    #Difficulty
+    def choose_difficulty(self):
+        if not self.in_choosing_difficulty:
+            if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-1 and pyxel.mouse_x > self.game.screen_x-19 and pyxel.mouse_y < self.game.screen_y-1 and pyxel.mouse_y > self.game.screen_y-19:
+                self.in_choosing_difficulty = True
+        if self.in_choosing_difficulty:
+
+            #Quit
+            if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-60+16 and pyxel.mouse_x > self.game.screen_x/2-60 and pyxel.mouse_y < self.game.screen_y/2-77+16 and pyxel.mouse_y > self.game.screen_y/2-77:
+                self.in_choosing_difficulty = False
+
+    def draw_choose_difficulty(self):
+        if self.in_choosing_difficulty:
+            pyxel.rect(self.game.screen_x/2-60, self.game.screen_y/2-60, 120, 80, 5)
+            pyxel.rectb(self.game.screen_x/2-60, self.game.screen_y/2-60, 120, 80, 10)
+
+
+            pyxel.rect(self.difficulty_pos[self.difficulty]['x']-1, self.difficulty_pos[self.difficulty]['y']-1, 18, 18, 2)
+            for diff in self.difficulty_pos:
+                pyxel.blt(self.difficulty_pos[diff]['x'], self.difficulty_pos[diff]['y'], self.game.menu.difficulty_pyxres[diff]['image'], self.game.menu.difficulty_pyxres[diff]['x'], self.game.menu.difficulty_pyxres[diff]['y'], self.game.menu.difficulty_pyxres[diff]['width'], self.game.menu.difficulty_pyxres[diff]['height'], 0)
+
+            #Quit
+            pyxel.blt(self.game.screen_x/2-60, self.game.screen_y/2-77, 1, 48, 0, 16, 16,0)
+
 
 
 
@@ -184,6 +216,7 @@ class LevelEditor:
         for obstacle in self.obstacles_temp:
             if obstacle['x']-self.camera_x < self.game.screen_x:
                 pyxel.blt(obstacle['x']-self.camera_x, obstacle['y'], self.game.level.obstacles_pyxres[obstacle['type']]['image'], self.game.level.obstacles_pyxres[obstacle['type']]['x'], self.game.level.obstacles_pyxres[obstacle['type']]['y'], self.game.level.obstacles_pyxres[obstacle['type']]['width'], self.game.level.obstacles_pyxres[obstacle['type']]['height'], 0)
+                
 
         #Finish line
         if len(self.obstacles_temp) > 0:
@@ -219,6 +252,9 @@ class LevelEditor:
             self.place_obstacle()
             self.remove_obstacle()
 
+            #Difficulty
+            self.choose_difficulty()
+
             #Quit editor
             self.quit_editor()
 
@@ -245,8 +281,11 @@ class LevelEditor:
             pyxel.text(30, 5, f"Obstacle choisis: {self.choosen_obstacles}", 7)
             pyxel.text(self.game.screen_x-65, self.game.cube.cube_y_min+22, "Fleches: Camera", 0)
 
+            #Difficulty
+            self.draw_choose_difficulty()
+
             #Obstacle on mouse
-            if self.choosen_placement == 'place':
+            if self.choosen_placement == 'place' and not self.in_choosing_difficulty:
                 pyxel.blt(self.mouse_x-8, self.mouse_y-8, self.game.level.obstacles_pyxres[self.choosen_obstacles]['image'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['x'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['y'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['width'], self.game.level.obstacles_pyxres[self.choosen_obstacles]['height'], 0)
 
             self.draw_save_as()
