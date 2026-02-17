@@ -22,7 +22,6 @@ class LevelEditor:
         self.mouse_x = 0
         self.mouse_y = 0
 
-        self.turned = False
 
         self.no_place_obstacle = 0
 
@@ -115,33 +114,16 @@ class LevelEditor:
     def choose_placement(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['place']['x']+16 and pyxel.mouse_x > self.obstacles_pos['place']['x'] and pyxel.mouse_y < self.obstacles_pos['place']['y']+16 and pyxel.mouse_y > self.obstacles_pos['place']['y']:
             self.choosen_placement = 'place'
-            self.choosen_obstacles = 'spike'
-            self.turned = False
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['delete']['x']+16 and pyxel.mouse_x > self.obstacles_pos['delete']['x'] and pyxel.mouse_y < self.obstacles_pos['delete']['y']+16 and pyxel.mouse_y > self.obstacles_pos['delete']['y']:
             self.choosen_placement = 'delete'  
     def choose_obstacle(self):
         if self.choosen_placement == 'place':
-            if (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['spike']['x']+16 and pyxel.mouse_x > self.obstacles_pos['spike']['x'] and pyxel.mouse_y < self.obstacles_pos['spike']['y']+16 and pyxel.mouse_y > self.obstacles_pos['spike']['y']):
-                self.choosen_obstacles = 'spike'
-                self.turned = False
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['turned spike']['x']+16 and pyxel.mouse_x > self.obstacles_pos['turned spike']['x'] and pyxel.mouse_y < self.obstacles_pos['turned spike']['y']+16 and pyxel.mouse_y > self.obstacles_pos['turned spike']['y']):
-                self.choosen_obstacles = 'turned spike'
-                self.turned = True
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['block']['x']+16 and pyxel.mouse_x > self.obstacles_pos['block']['x'] and pyxel.mouse_y < self.obstacles_pos['block']['y']+16 and pyxel.mouse_y > self.obstacles_pos['block']['y']):
-                self.choosen_obstacles = 'block'
-                self.turned = False
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['mur']['x']+16 and pyxel.mouse_x > self.obstacles_pos['mur']['x'] and pyxel.mouse_y < self.obstacles_pos['mur']['y']+16 and pyxel.mouse_y > self.obstacles_pos['mur']['y']):
-                self.choosen_obstacles = 'mur'
-                self.turned = False
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['orb']['x']+16 and pyxel.mouse_x > self.obstacles_pos['orb']['x'] and pyxel.mouse_y < self.obstacles_pos['orb']['y']+16 and pyxel.mouse_y > self.obstacles_pos['orb']['y']):
-                self.choosen_obstacles = 'orb'
-                self.turned = False
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['jump pad']['x']+16 and pyxel.mouse_x > self.obstacles_pos['jump pad']['x'] and pyxel.mouse_y < self.obstacles_pos['jump pad']['y']+16 and pyxel.mouse_y > self.obstacles_pos['jump pad']['y']):
-                self.choosen_obstacles = 'jump pad'
-                self.turned = False
-            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['gravity orb']['x']+16 and pyxel.mouse_x > self.obstacles_pos['gravity orb']['x'] and pyxel.mouse_y < self.obstacles_pos['gravity orb']['y']+16 and pyxel.mouse_y > self.obstacles_pos['gravity orb']['y']):
-                self.choosen_obstacles = 'gravity orb'
-                self.turned = False
+            for obs in self.obstacles_pos:
+                if (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos[obs]['x']+16 and pyxel.mouse_x > self.obstacles_pos[obs]['x'] and pyxel.mouse_y < self.obstacles_pos[obs]['y']+16 and pyxel.mouse_y > self.obstacles_pos[obs]['y']):
+                    if (not obs == 'place') and (not obs == 'delete'):
+                        self.choosen_obstacles = obs
+
+
     def editor_init(self):
         if not self.initialisation:
             self.obstacles_temp, self.end_of_level, self.difficulty = self.game.level.get_lvl_data()
@@ -179,6 +161,9 @@ class LevelEditor:
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-1 and pyxel.mouse_x > self.game.screen_x-19 and pyxel.mouse_y < self.game.screen_y-1 and pyxel.mouse_y > self.game.screen_y-19:
                 self.in_choosing_difficulty = True
         if self.in_choosing_difficulty:
+            for diff in self.difficulty_pos:
+                if (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.difficulty_pos[diff]['x']+16 and pyxel.mouse_x > self.difficulty_pos[diff]['x'] and pyxel.mouse_y < self.difficulty_pos[diff]['y']+16 and pyxel.mouse_y > self.difficulty_pos[diff]['y']):
+                    self.difficulty = diff
 
             #Quit
             if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-60+16 and pyxel.mouse_x > self.game.screen_x/2-60 and pyxel.mouse_y < self.game.screen_y/2-77+16 and pyxel.mouse_y > self.game.screen_y/2-77:
