@@ -1,4 +1,5 @@
 import pyxel
+import json
 
 class Menu:
     def __init__(self, game):
@@ -11,29 +12,21 @@ class Menu:
         self.chosen_level_max = 0
         self.play_button_list = []
 
-        self.difficulty = {
-            'lvl1': {
-                'image': 2,
-                'x': 0,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            },
-            'lvl2': {
-                'image': 2,
-                'x': 16,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            }
-        }
+        
+        
+
+
+    def get_lvl_difficulty(self):
+        _, _, self.difficulty = self.game.level.get_lvl_data()
 
 
     def menu_update(self):
         if self.in_menu:
             if not self.menu_song_var:
                 pyxel.playm(0, 0, True) #menu song
+                self.get_lvl_difficulty()
                 self.menu_song_var = True
+                
             pyxel.mouse(True)
             if self.game_menu == 1: #menu principale
                 #Quitter
@@ -58,15 +51,18 @@ class Menu:
                         self.chosen_level = self.chosen_level_max
                     else:
                         self.chosen_level -= 1
+                    self.game.level.current_level = f'lvl{self.chosen_level}'
+                    self.get_lvl_difficulty()
                 elif pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x-10 and pyxel.mouse_x > self.game.screen_x-10-16 and pyxel.mouse_y < self.game.screen_y/2+16 and pyxel.mouse_y > self.game.screen_y/2 or pyxel.btnp(pyxel.KEY_RIGHT): #droit
                     if self.chosen_level == self.chosen_level_max:
                         self.chosen_level = 1
                     else:
                         self.chosen_level += 1
+                    self.game.level.current_level = f'lvl{self.chosen_level}'
+                    self.get_lvl_difficulty()
 
                 #Bouton cliqué ? JOUER
                 if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.game.screen_x/2-64+128 and pyxel.mouse_x > self.game.screen_x/2-64 and pyxel.mouse_y < self.game.screen_y/2-16+32 and pyxel.mouse_y > self.game.screen_y/2-16 or pyxel.btnp(pyxel.KEY_RETURN):
-                    self.game.level.current_level = f'lvl{self.chosen_level}'
                     self.in_menu = False
                     self.game.level.in_level = True
 
@@ -75,7 +71,6 @@ class Menu:
                     #SAVOIR QUELLE NIVEAU A EDITER
                     pyxel.stop()
                     self.game.level_editor.in_editor = True
-                    self.game.level.current_level = f'lvl{self.chosen_level}'
                     self.game.level_editor.choosing_level = self.chosen_level
                     self.in_menu = False
 
@@ -108,5 +103,5 @@ class Menu:
                 pyxel.bltm(self.game.screen_x/2-64, self.game.screen_y/2-16, 0, 0, self.chosen_level*32, 128, 32, 0)
 
                 #Difficulté Niveau
-                if f"lvl{self.chosen_level}" in self.difficulty:
-                    pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.difficulty[f"lvl{self.chosen_level}"]['image'], self.difficulty[f"lvl{self.chosen_level}"]['x'], self.difficulty[f"lvl{self.chosen_level}"]['y'], self.difficulty[f"lvl{self.chosen_level}"]['width'], self.difficulty[f"lvl{self.chosen_level}"]['height'], 0)
+                pyxel.blt(self.game.screen_x/2-8, self.game.screen_y/2+25, self.game.pyxres.difficulty[self.difficulty]['image'], self.game.pyxres.difficulty[self.difficulty]['x'], self.game.pyxres.difficulty[self.difficulty]['y'], self.game.pyxres.difficulty[self.difficulty]['width'], self.game.pyxres.difficulty[self.difficulty]['height'], 0)
+        

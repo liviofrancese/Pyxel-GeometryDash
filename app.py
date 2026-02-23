@@ -8,6 +8,7 @@ from cube import Cube
 from cheats import Cheats
 from level import Level
 from music import Music
+from pyxres import Pyxres
 
 
 class Game:
@@ -25,6 +26,7 @@ class Game:
         }
 
         #Class
+        self.pyxres = Pyxres(self)
         self.level_editor = LevelEditor(self)
         self.menu = Menu(self)
         self.cube = Cube(self)

@@ -241,3 +241,15 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 - Bugs fix + automatisation
 - On a continué le niveau 2
 - Changement de gravité fonctionnel
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">16/02/2026 - ../02/2026 (vancance de Février):</span>
+### ✅ Ajouts / Changements:
+- Automatisation:
+    - Difficulté des niveaux automatisation
+    - editlvls.py
+- Changer la difficulté du niveau dans l'éditeur
+- pyxres.py --> image, x, y, longueur et largeur des dessins dans le .pyxres
