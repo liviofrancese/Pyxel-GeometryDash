@@ -44,6 +44,7 @@ class LevelEditor:
             'orb': {'x': 80, 'y': self.game.screen_y-40},
             'jump pad': {'x': 80, 'y': self.game.screen_y-20},
             'gravity orb': {'x': 100, 'y': self.game.screen_y-40},
+            'small spike': {'x': 40, 'y': self.game.screen_y-20},
         }
       
 
@@ -133,6 +134,9 @@ class LevelEditor:
                 self.turned = False
             elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['gravity orb']['x']+16 and pyxel.mouse_x > self.obstacles_pos['gravity orb']['x'] and pyxel.mouse_y < self.obstacles_pos['gravity orb']['y']+16 and pyxel.mouse_y > self.obstacles_pos['gravity orb']['y']):
                 self.choosen_obstacles = 'gravity orb'
+                self.turned = False
+            elif (pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < self.obstacles_pos['small spike']['x']+16 and pyxel.mouse_x > self.obstacles_pos['small spike']['x'] and pyxel.mouse_y < self.obstacles_pos['small spike']['y']+16 and pyxel.mouse_y > self.obstacles_pos['small spike']['y']):
+                self.choosen_obstacles = 'small spike'
                 self.turned = False
     def editor_init(self):
         if not self.initialisation:

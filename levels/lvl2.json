@@ -7,59 +7,9 @@
             "type": "orb"
         },
         {
-            "x": 250,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 218,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 234,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 266,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 282,
-            "y": 140,
-            "type": "spike"
-        },
-        {
             "x": 500,
             "y": 120,
             "type": "orb"
-        },
-        {
-            "x": 468,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 484,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 500,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 516,
-            "y": 140,
-            "type": "spike"
-        },
-        {
-            "x": 532,
-            "y": 140,
-            "type": "spike"
         },
         {
             "x": 700,
@@ -132,24 +82,9 @@
             "type": "block"
         },
         {
-            "x": 920,
-            "y": 60,
-            "type": "orb"
-        },
-        {
             "x": 966,
             "y": 60,
             "type": "block"
-        },
-        {
-            "x": 966,
-            "y": 44,
-            "type": "block"
-        },
-        {
-            "x": 966,
-            "y": 28,
-            "type": "spike"
         },
         {
             "x": 960,
@@ -920,26 +855,6 @@
             "x": 2728,
             "y": 43,
             "type": "turned spike"
-        },
-        {
-            "x": 2852,
-            "y": 140,
-            "type": "block"
-        },
-        {
-            "x": 2852,
-            "y": 126,
-            "type": "block"
-        },
-        {
-            "x": 2852,
-            "y": 115,
-            "type": "block"
-        },
-        {
-            "x": 2852,
-            "y": 100,
-            "type": "spike"
         },
         {
             "x": 2890,
@@ -1780,6 +1695,96 @@
             "x": 2206,
             "y": 65,
             "type": "orb"
+        },
+        {
+            "x": 2848,
+            "y": 115,
+            "type": "block"
+        },
+        {
+            "x": 2848,
+            "y": 129,
+            "type": "block"
+        },
+        {
+            "x": 2848,
+            "y": 140,
+            "type": "block"
+        },
+        {
+            "x": 2848,
+            "y": 100,
+            "type": "spike"
+        },
+        {
+            "x": 933,
+            "y": 59,
+            "type": "orb"
+        },
+        {
+            "x": 966,
+            "y": 46,
+            "type": "block"
+        },
+        {
+            "x": 966,
+            "y": 32,
+            "type": "block"
+        },
+        {
+            "x": 966,
+            "y": 17,
+            "type": "spike"
+        },
+        {
+            "x": 218,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 282,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 234,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 250,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 266,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 468,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 532,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 484,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 500,
+            "y": 140,
+            "type": "small spike"
+        },
+        {
+            "x": 516,
+            "y": 140,
+            "type": "small spike"
         }
     ]
 }

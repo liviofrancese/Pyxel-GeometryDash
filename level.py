@@ -75,6 +75,13 @@ class Level:
                 'y': 32,
                 'width': 16,
                 'height': 16
+            },
+            'small spike': {
+                'image': 0,
+                'x': 16,
+                'y': 48,
+                'width': 16,
+                'height': 16
             }
             
         }
@@ -121,6 +128,12 @@ class Level:
                 'obs_haut': -2,
                 'obs_bas': 18
             },
+            'small spike': {
+                'obs_gauche': 4,
+                'obs_droit': 11,
+                'obs_haut': 10,
+                'obs_bas': 16
+            }
         }
         
         self.death_sound_var = False
