@@ -26,69 +26,7 @@ class Level:
         self.end = 0
         self.end_pourc = 0
 
-<<<<<<< HEAD
-        self.obstacles_pyxres = {
-            'spike': {
-                'image': 0,
-                'x': 16,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'turned spike': {
-                'image': 0,
-                'x': 16,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            },
-            'block': {
-                'image': 0,
-                'x': 32,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'mur': {
-                'image': 0,
-                'x': 0,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'orb': {
-                'image': 0,
-                'x': 48,
-                'y': 16,
-                'width': 16,
-                'height': 16
-            },
-            'jump pad': {
-                'image': 0,
-                'x': 0,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            },
-            'gravity orb': {
-                'image': 0,
-                'x': 48,
-                'y': 32,
-                'width': 16,
-                'height': 16
-            },
-            'small spike': {
-                'image': 0,
-                'x': 16,
-                'y': 48,
-                'width': 16,
-                'height': 16
-            }
-            
-        }
-=======
         
->>>>>>> 651c03b0b884a1abc7dbbf73a0909bf6015a4c47
         self.collisions = {
             'spike': {
                 'obs_gauche': 4,
@@ -132,12 +70,6 @@ class Level:
                 'obs_haut': -2,
                 'obs_bas': 18
             },
-            'small spike': {
-                'obs_gauche': 4,
-                'obs_droit': 11,
-                'obs_haut': 10,
-                'obs_bas': 16
-            }
         }
         
         self.death_sound_var = False
