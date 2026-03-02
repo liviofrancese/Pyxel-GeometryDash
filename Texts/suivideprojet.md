@@ -246,10 +246,20 @@ J'ai fais en sorte que le programme regarde le y du cube et regarde que si il a 
 ---
 <br></br>
 
-## 📅 <span style="color:orange">16/02/2026 - ../02/2026 (vancance de Février):</span>
+## 📅 <span style="color:orange">16/02/2026 - 01/03/2026 (vancance de Février):</span>
 ### ✅ Ajouts / Changements:
 - Automatisation:
     - Difficulté des niveaux automatisation
     - editlvls.py
 - Changer la difficulté du niveau dans l'éditeur
-- pyxres.py --> image, x, y, longueur et largeur des dessins dans le .pyxres
+- pyxres.py --> image, x, y, longueur et largeur des dessins du .pyxres
+
+
+---
+<br></br>
+
+## 📅 <span style="color:orange">02/03/2026:</span>
+### ✅ Ajouts / Changements:
+- Ajout d'un petit spike (sa collision + son dessin)
+### ⚠️ Problèmes Rencontrés:
+- Problème de lecture du geometrydash.pyxres à cause d'une mise à jour de pyxel studio (il fallait upgrade la lib pyxel)
