@@ -70,7 +70,7 @@ class Level:
                 'obs_haut': -2,
                 'obs_bas': 18
             },
-            'small spike²   ': {
+            'small spike': {
                 'obs_gauche': 4,
                 'obs_droit': 11,
                 'obs_haut': 11,

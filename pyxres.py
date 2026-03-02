@@ -83,7 +83,7 @@ class Pyxres:
                 'width': 16,
                 'height': 16
             },
-            'spike': {
+            'small spike': {
                 'image': 0,
                 'x': 16,
                 'y': 48,
@@ -97,18 +97,25 @@ class Pyxres:
             'NA': {
                 'image': 2,
                 'x': 0,
-                'y': 48,
+                'y': 64,
                 'width': 16,
                 'height': 16
             },
             'normal': {
+                'image': 2,
+                'x': 0,
+                'y': 48,
+                'width': 16,
+                'height': 16
+            },
+            'hard': {
                 'image': 2,
                 'x': 16,
                 'y': 48,
                 'width': 16,
                 'height': 16
             },
-            'hard': {
+            'insane': {
                 'image': 2,
                 'x': 32,
                 'y': 48,
