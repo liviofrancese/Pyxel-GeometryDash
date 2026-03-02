@@ -82,7 +82,14 @@ class Pyxres:
                 'y': 32,
                 'width': 16,
                 'height': 16
-            }
+            },
+            'spike': {
+                'image': 0,
+                'x': 16,
+                'y': 48,
+                'width': 16,
+                'height': 16
+            },
             
         }
 
