@@ -92,7 +92,7 @@ class LevelEditor:
             pyxel.text(self.game.screen_x/2-80, self.game.screen_y/2-63, "Level name:", 7)
             pyxel.text(self.game.screen_x/2-80, self.game.screen_y/2-55, f"{self.lvl_name_text}_", 7)
             if self.lvl_already_exists:
-                pyxel.text(self.game.screen_x/2-80, self.game.screen_y/2+-47, "Level already exists", 2)
+                pyxel.text(self.game.screen_x/2-80, self.game.screen_y/2-47, "Level already exists", 2)
 
     def quit_editor(self):
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and pyxel.mouse_x < 5+16 and pyxel.mouse_x > 5 and pyxel.mouse_y < 5+16 and pyxel.mouse_y > 5 or pyxel.btnp(pyxel.KEY_ESCAPE):
