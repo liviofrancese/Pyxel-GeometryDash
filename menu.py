@@ -78,7 +78,7 @@ class Menu:
     def menu_draw(self):
         if self.in_menu:
             pyxel.cls(1)
-            if self.game_menu == 1: #menu principale
+            if self.game_menu == 1: #menu principal
                 #Quitter
                 pyxel.blt(5, 5, 1, 48, 0, 16, 16,0)
 
