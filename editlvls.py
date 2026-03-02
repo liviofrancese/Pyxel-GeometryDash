@@ -49,7 +49,8 @@ class LevelEditor:
         self.difficulty_pos = {
             'NA': {'x': self.game.screen_x/2-58, 'y': self.game.screen_y/2-58},
             'normal': {'x': self.game.screen_x/2-58+18, 'y': self.game.screen_y/2-58},
-            'hard': {'x': self.game.screen_x/2-58+18+18, 'y': self.game.screen_y/2-58}
+            'hard': {'x': self.game.screen_x/2-58+18+18, 'y': self.game.screen_y/2-58},
+            'insane': {'x': self.game.screen_x/2-58+18+18+18, 'y': self.game.screen_y/2-58}
         }
 
         self.in_choosing_difficulty = False
